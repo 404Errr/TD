@@ -34,7 +34,7 @@ import javax.swing.JPanel;
  * SPACE = hold PAUSE
  * S = start next round (or button)
  * A = toggle automatic round start (or button)
- * left mouse = place tower/select tower/everything
+ * left mouse = place tower/select tower/everything else
  * right mouse = cancel placement of tower
  * esc = deselect the selected tower/cancel placement of tower
  * delete = delete/sell selected tower (or button)
@@ -139,7 +139,7 @@ interface Data {
 	static final double TOWER_TURRET_BASE_RANGE = 20,             TOWER_TURRET_SIZE = 1.5;
 	static final double TOWER_BOMB_BASE_RANGE = 15,               TOWER_BOMB_SIZE = 1.5;
 	static final double TOWER_SUPER_TURRET_BASE_RANGE = 30,       TOWER_SUPER_TURRET_SIZE = 1.5;
-	static final double TOWER_NINJA_BASE_RANGE = 22,              TOWER_NINJA_SIZE = 1.5;
+	static final double TOWER_NINJA_BASE_RANGE = 16,              TOWER_NINJA_SIZE = 1.5;
 	static final double TOWER_SNIPER_BASE_RANGE = 2,              TOWER_SNIPER_SIZE = 1.5;
 	static final double TOWER_SHOTGUN_BASE_RANGE = 8,             TOWER_SHOTGUN_SIZE = 1.5;
 	static final double TOWER_SPRAYER_BASE_RANGE = 5,             TOWER_SPRAYER_SIZE = 1.25;
@@ -2407,6 +2407,12 @@ class TowerSniper extends Tower {
 class TowerSprayer extends Tower {
 	TowerSprayer(int x, int y, boolean placed) {
 		super(x, y, placed, TOWER_SPRAYER_SIZE, TOWER_SPRAYER_BASE_RANGE, TOWER_SPRAYER_VALUE);
+		availableUpgrades.addAll(Arrays.asList(
+			new TowerUpgrade(TowerUpgradeType.MAX_COOLDOWN, 300, -10d, true, false, 5),
+			new TowerUpgrade(TowerUpgradeType.RANGE, 50, 1*TD.getScale(), true, false, 2),
+			new TowerUpgrade(TowerUpgradeType.BULLET_COUNT, 20, 2, true, false, 3),
+			new TowerUpgrade(TowerUpgradeType.DAMAGE, 20, 1, true, false, 3)
+		));
 		maxCooldown = TOWER_SPRAYER_BASE_COOLDOWN;
 		damage = TOWER_SPRAYER_BASE_DAMAGE;
 		bulletCount = TOWER_SPRAYER_BASE_PELLET_COUNT;
@@ -2488,10 +2494,10 @@ class TowerTurret extends Tower {
 	TowerTurret(int x, int y, boolean placed) {
 		super(x, y, placed, TOWER_TURRET_SIZE, TOWER_TURRET_BASE_RANGE, TOWER_TURRET_VALUE);
 		availableUpgrades.addAll(Arrays.asList(
-				new TowerUpgrade(TowerUpgradeType.MAX_COOLDOWN, 200, -10d, true, false, 3),
-				new TowerUpgrade(TowerUpgradeType.RANGE, 100, 2*TD.getScale(), true, false, 3),
-				new TowerUpgrade(TowerUpgradeType.DAMAGE, 230, 1, true, false, 4)
-				));
+			new TowerUpgrade(TowerUpgradeType.MAX_COOLDOWN, 200, -10d, true, false, 3),
+			new TowerUpgrade(TowerUpgradeType.RANGE, 100, 2*TD.getScale(), true, false, 3),
+			new TowerUpgrade(TowerUpgradeType.DAMAGE, 230, 1, true, false, 4)
+		));
 		maxCooldown = TOWER_TURRET_BASE_COOLDOWN;
 		damage = TOWER_TURRET_BASE_DAMAGE;
 		name = "Turret";
@@ -3037,6 +3043,7 @@ class UpdateLoop implements Runnable {
 		}
 	}
 }
+
 
 
 
