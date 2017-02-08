@@ -68,13 +68,13 @@ public class Main implements Data {
 	private static UpdateLoop updateLoop;
 
 	public static void main(String[] args) {
-		level = new Level(LevelLayout.layout);
-		RoundManager.init();
-		updateLoop = new UpdateLoop();
-		Window.init();
-		UI.init();
-		Thread update = new Thread(updateLoop, "TD Update");
-		update.start();
+		level = new Level(LevelLayout.layout);//create the level
+		RoundManager.init();//generate rounds from the config file
+		updateLoop = new UpdateLoop();//create the loop
+		Window.init();//create the window
+		UI.init();//initialize the ui
+		Thread update = new Thread(updateLoop, "TD");//create thread
+		update.start();//start thread
 
 	}
 
@@ -83,12 +83,12 @@ public class Main implements Data {
 		System.out.println("Automatic rounds set to: "+AUTO_ROUND);
 	}
 
-	public static void toggleFree() {
+	public static void toggleFree() {//toggles money functionality
 		FREE = (FREE)?false:true;
 		System.out.println("Free set to: "+FREE);
 	}
 
-	public static void toggleLoop() {
+	public static void toggleLoop() {//toggles what happens when enemies reach the end of the path (go to start or get deleted)
 		LOOP_ENEMIES = (LOOP_ENEMIES)?false:true;
 		System.out.println("looping set to: "+LOOP_ENEMIES);
 	}
@@ -129,10 +129,6 @@ public class Main implements Data {
 
 	public static int getUI_WIDTH() {
 		return UI_WIDTH;
-	}
-
-	public static int getUiW() {
-		return UI_W;
 	}
 
 	public static int getUPS() {
