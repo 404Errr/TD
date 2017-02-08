@@ -6,7 +6,6 @@ import java.awt.Font;
 import main.Main;
 
 public interface Data {
-//	static final String ROUND_CONFIG = "";//TODO move this to own file
 	static final String ROUND_CONFIG_PATH = "src/data/roundConfig";
 
 	static final double TOWER_TURRET_BASE_DAMAGE = 1,             TOWER_TURRET_BASE_COOLDOWN = 650;
