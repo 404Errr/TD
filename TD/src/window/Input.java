@@ -8,16 +8,18 @@ import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 
+import data.Data;
 import enemy.Enemy;
 import enemy.EnemyManager;
 import enemy.EnemyType;
 import main.Cursor;
 import main.Main;
+import main.Player;
 import main.UpdateLoop;
 import tower.Tower;
 import window.button.Button;
 
-class Input implements KeyListener, MouseMotionListener, MouseListener, MouseWheelListener {
+class Input implements KeyListener, MouseMotionListener, MouseListener, MouseWheelListener, Data {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if (!EnemyManager.enemies.isEmpty()&&e.getKeyCode()==KeyEvent.VK_UP) {
@@ -25,6 +27,12 @@ class Input implements KeyListener, MouseMotionListener, MouseListener, MouseWhe
 		}
 		if (!EnemyManager.enemies.isEmpty()&&e.getKeyCode()==KeyEvent.VK_DOWN&&EnemyManager.enemies.get(0).getHealth()>1) {
 			EnemyManager.enemies.get(0).hit(1, false);
+		}
+		if (e.getKeyCode()==KeyEvent.VK_M) {
+			Player.changeMoney(MONEY_CHEAT_AMOUNT);
+		}
+		if (e.getKeyCode()==KeyEvent.VK_C) {
+			Window.centerWindow();
 		}
 		if (e.getKeyCode()==KeyEvent.VK_SPACE) if (!Main.PAUSED) {//pause
 			Main.togglePaused(true);

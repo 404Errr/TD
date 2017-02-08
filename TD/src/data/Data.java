@@ -105,7 +105,7 @@ public interface Data {
 	static final double TOWER_ICE_VALUE = 300;
 
 	static final double STARTING_MONEY = 10000/*750*/, STARTING_LIVES = 100;
-	static final double ROUND_MONEY_REWARD = 100;
+	static final double ROUND_MONEY_REWARD = 100, MONEY_CHEAT_AMOUNT = 100;
 	static final double TOWER_SELL_RATE = 0.8d;
 
 	static final int ENEMY_SIZE = Main.getScale(), ENEMY_HITBOX_SIZE = Main.getScale()*3/2;
