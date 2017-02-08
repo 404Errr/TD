@@ -28,6 +28,7 @@ import window.ui.UI;
  * button A = spawn 9 turrets in grid
  * button B = spawn 2 turrets near path
  * button C = spawn 4 turrets near path
+ * button D = spawn 2 turrets above one another
  * up/down arrow = change health of first enemy
  *
  * use with minor caution: (probably broken anyway)

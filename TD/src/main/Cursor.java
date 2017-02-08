@@ -14,6 +14,7 @@ public class Cursor {
 
 	public static void click(MouseEvent e, boolean down) {
 		boolean deselectSelectedTower = false;
+		Tower towerToSelect = selectedTower;
 		Button b;
 		if (down) {//if click was down (not up)
 			if (!UI.getBounds().contains(x, y)&&towerToPlace==null) {//check for click in main window
@@ -21,11 +22,13 @@ public class Cursor {
 				for (int i = 0;i<TowerManager.towers.size();i++) {
 					t = TowerManager.towers.get(i);
 					if (t == selectedTower) {//if clicked on the selected tower
-						deselectSelectedTower = true;//deselect the tower
+						if (towerToSelect==selectedTower) towerToSelect = null;
+						//deselectSelectedTower = true;//deselect the tower
 						t.updateUpgrades();//update the tower
 					}
 					else if (t.getBounds().contains(x, y)) {//if clicked on a different tower
-						selectedTower(t);//select the tower
+						towerToSelect = t;
+						//selectTower(t);//select the tower
 						t.updateUpgrades();//update the tower
 					}
 				}
@@ -43,38 +46,41 @@ public class Cursor {
 				}
 			}
 		}
+		if (towerToPlace==null) {//update buttons only if not holding anything
+			for (int i = 0;i<UI.getButtons().size();i++) {
+				b = UI.getButtons().get(i);
+				if (b.getBounds().contains(x, y)&&e.getButton()==MouseEvent.BUTTON1) {//if cursor is on button and was leftclick
+					towerToSelect = null;
+					//deselectSelectedTower = true;//deselect if pressed a non upgrade button
+					b.press(down);//press the button if click was down, depress if up
+				}
+				else {
+					b.press(false);//depress the button
+				}
+			}
+		}
 		if (UpgradeUI.isOpen()) {//if needs to update the upgrade ui
 			for (int i = 0;i<UpgradeUI.getButtons().size();i++) {
 				b = UpgradeUI.getButtons().get(i);
 				if (b.getBounds().contains(x, y)&&e.getButton()==MouseEvent.BUTTON1) {//if cursor is on button and was leftclick
 					b.press(down);//press the button if click was down, depress if up
-					deselectSelectedTower = false;//dont deselect if clicked an upgrade
+					towerToSelect = selectedTower;
+					//deselectSelectedTower = false;//dont deselect if clicked an upgrade
 				}
 				else {
 					b.press(false);//depress the button
 				}
 			}
 		}
-		if (towerToPlace==null) {//update buttons only if not holding anything
-			for (int i = 0;i<UI.getButtons().size();i++) {
-				b = UI.getButtons().get(i);
-				if (b.getBounds().contains(x, y)&&e.getButton()==MouseEvent.BUTTON1) {//if cursor is on button and was leftclick
-					deselectSelectedTower = true;//deselect if pressed a non upgrade button
-					b.press(down);//press the button if click was down, depress if up
-				}
-				else {
-					b.press(false);//depress the button
-				}
-			}
-		}
-		if (deselectSelectedTower) {//if was told to deslect
+		if (selectedTower!=towerToSelect) selectTower(towerToSelect);
+		/*if (deselectSelectedTower) {//if was told to deslect
 			deselectSelectedTower();//deselect
-		}
+		}*/
 	}
 
 	public static void deselectSelectedTower() {
 		System.out.println("-Deselected "+selectedTower);
-		selectedTower(null);//deselect
+		selectTower(null);//deselect
 	}
 
 	public static void deselectTowerToPlace() {
@@ -98,7 +104,7 @@ public class Cursor {
 		return selectedTower;
 	}
 
-	public static void selectedTower(Tower toSelect) {
+	public static void selectTower(Tower toSelect) {
 		selectedTower = toSelect;
 		if (selectedTower!=null) {//if didnt set to null (deselect)
 			System.out.println("+Selected "+selectedTower);

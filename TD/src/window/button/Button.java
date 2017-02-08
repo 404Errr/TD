@@ -22,7 +22,6 @@ public class Button implements Data {
 	protected Rectangle bounds;
 	protected boolean hovered, pressed;
 	protected String text0 = "", text1 = "", text2 = "";
-
 	protected Font textFont = null;
 
 	Button() {}
@@ -66,7 +65,12 @@ public class Button implements Data {
 				System.out.println("Create Bomb");
 				Cursor.setTowerToPlace(new TowerBomb(0, 0, false));
 				break;
-			case 9:
+			case 10:
+				System.out.println();
+				TowerManager.towers.add(new TowerTurret(20*Main.getScale(), 20*Main.getScale(), true));
+				TowerManager.towers.add(new TowerTurret(20*Main.getScale(), 23*Main.getScale(), true));
+				break;
+			case 11:
 				System.out.println();
 				TowerManager.towers.add(new TowerTurret(2*Main.getScale(), 2*Main.getScale(), true));
 				TowerManager.towers.add(new TowerTurret(55*Main.getScale(), 2*Main.getScale(), true));
@@ -78,12 +82,12 @@ public class Button implements Data {
 				TowerManager.towers.add(new TowerTurret(55*Main.getScale(), 14*Main.getScale(), true));
 				TowerManager.towers.add(new TowerTurret(27*Main.getScale(), 14*Main.getScale(), true));
 				break;
-			case 10:
+			case 12:
 				System.out.println();
 				TowerManager.towers.add(new TowerTurret(8*Main.getScale(), 9*Main.getScale(), true));
 				TowerManager.towers.add(new TowerTurret(8*Main.getScale(), 19*Main.getScale(), true));
 				break;
-			case 11:
+			case 13:
 				System.out.println();
 				TowerManager.towers.add(new TowerTurret(10*Main.getScale(), 10*Main.getScale(), true));
 				TowerManager.towers.add(new TowerTurret(6*Main.getScale(), 10*Main.getScale(), true));
@@ -157,15 +161,19 @@ public class Button implements Data {
 				text2 = "Bomb";
 				textFont = new Font("Helvetica", Font.BOLD, Main.getScale()/2);
 				break;
-			case 9:
-				text0 = "    A";
-				textFont = new Font("Helvetica", Font.BOLD, Main.getScale()/2);
-				break;
 			case 10:
-				text0 = "    B";
+				text0 = "    D";
 				textFont = new Font("Helvetica", Font.BOLD, Main.getScale()/2);
 				break;
 			case 11:
+				text0 = "    A";
+				textFont = new Font("Helvetica", Font.BOLD, Main.getScale()/2);
+				break;
+			case 12:
+				text0 = "    B";
+				textFont = new Font("Helvetica", Font.BOLD, Main.getScale()/2);
+				break;
+			case 13:
 				text0 = "    C";
 				textFont = new Font("Helvetica", Font.BOLD, Main.getScale()/2);
 				break;
