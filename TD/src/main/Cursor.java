@@ -20,14 +20,12 @@ public class Cursor {
 				Tower t;
 				for (int i = 0;i<TowerManager.towers.size();i++) {
 					t = TowerManager.towers.get(i);
-					if (t == selectedTower) {//if clicked on the selected tower
-						if (towerToSelect==selectedTower) towerToSelect = null;
-						//deselectSelectedTower = true;//deselect the tower
+					if (t == selectedTower&&towerToSelect==selectedTower) {//if clicked on the selected tower&& if towerToSelect hasn't changed yet
+						towerToSelect = null;//deselect the tower
 						t.updateUpgrades();//update the tower
 					}
-					else if (t.getBounds().contains(x, y)) {//if clicked on a different tower
-						towerToSelect = t;
-						//selectTower(t);//select the tower
+					else if (t.getBounds().contains(x, y)) {//if clicked on a different tower (not t)
+						towerToSelect = t;//select the tower
 						t.updateUpgrades();//update the tower
 					}
 				}
@@ -49,8 +47,7 @@ public class Cursor {
 			for (int i = 0;i<UI.getButtons().size();i++) {
 				b = UI.getButtons().get(i);
 				if (b.getBounds().contains(x, y)&&e.getButton()==MouseEvent.BUTTON1) {//if cursor is on button and was leftclick
-					towerToSelect = null;
-					//deselectSelectedTower = true;//deselect if pressed a non upgrade button
+					towerToSelect = null;//deselect if pressed a non upgrade button
 					b.press(down);//press the button if click was down, depress if up
 				}
 				else {
@@ -64,17 +61,16 @@ public class Cursor {
 				if (b.getBounds().contains(x, y)&&e.getButton()==MouseEvent.BUTTON1) {//if cursor is on button and was leftclick
 					b.press(down);//press the button if click was down, depress if up
 					towerToSelect = selectedTower;
-					//deselectSelectedTower = false;//dont deselect if clicked an upgrade
+					//deselectSelectedTower = false;//don't deselect if clicked an upgrade
 				}
 				else {
 					b.press(false);//depress the button
 				}
 			}
 		}
-		if (selectedTower!=towerToSelect) selectTower(towerToSelect);
-		/*if (deselectSelectedTower) {//if was told to deslect
-			deselectSelectedTower();//deselect
-		}*/
+		if (selectedTower!=towerToSelect) {//if towerToSelect will change
+			selectTower(towerToSelect);//select what was told to select
+		}
 	}
 
 	public static void deselectSelectedTower() {
@@ -83,15 +79,13 @@ public class Cursor {
 	}
 
 	public static void deselectTowerToPlace() {
-		if (towerToPlace!=null) {
-			setTowerToPlace(null);//deselect
-		}
+		setTowerToPlace(null);//deselect
 	}
 
 	public static void deleteSelectedTower() {
 		if (selectedTower!=null) {//has something selected
 			System.out.println("Delete Tower "+selectedTower);
-			selectedTower.destroy(true);//mark the tower for deletion (and give player money if TD.FREE is false)
+			selectedTower.destroy(true);//mark the tower for deletion (and give player money if should give money)
 			deselectSelectedTower();//deselect
 		}
 		else {
