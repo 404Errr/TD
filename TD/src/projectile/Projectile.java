@@ -1,0 +1,118 @@
+package projectile;
+
+import java.awt.geom.Line2D;
+
+import data.Data;
+import enemy.Enemy;
+import enemy.EnemyManager;
+import main.Main;
+import main.Player;
+import tower.Tower;
+import tower.towers.TowerBomb;
+
+public abstract class Projectile implements Data {
+	protected double x, y, dX, dY, ddX, ddY, life;
+	protected int size;
+	protected boolean visible, damages, destroy, canDamageMetal;
+	protected Tower creator;
+	protected Line2D hitLine;
+
+	public Projectile(Tower c, int x, int y) {
+		this.creator = c;
+		this.x = x;
+		this.y = y;
+	}
+
+	public Projectile(Tower c, int x, int y, double damage) {
+		this.creator = c;
+		this.x = x;
+		this.y = y;
+		damages = true;
+		this.life = damage;
+	}
+
+	protected void attemptHit() {
+		Enemy e;
+		hitLine = new Line2D.Double((int)x, (int)y, (int)x-dX, (int)y-dY);
+		for (int i = 0;i<EnemyManager.enemies.size();i++) {
+			e = EnemyManager.enemies.get(i);
+			if (life>0&&!e.isDestroy()&&e.canDamage(canDamageMetal)) {
+				if (hitLine.intersects(e.getHitbox())) {
+					damage(e);
+				}
+			}
+		}
+	}
+
+	public boolean tick() {
+		move();
+		tickSpecial();
+		if (x<-100||y<-100||x>(Main.getLevel().getMap()[0].length*Main.getScale())+100||y>(Main.getLevel().getMap().length*Main.getScale())+100||life<=0) {//dead or off screen
+			markDestroy();
+		}
+		if (damages) {
+			attemptHit();
+		}
+		return destroy;
+	}
+
+	void tickSpecial() {}
+
+	protected void move() {
+		dX+=ddX*Main.PROJECTILE_BASE_SPEED;
+		dY+=ddY*Main.PROJECTILE_BASE_SPEED;
+		x+=dX*Main.PROJECTILE_BASE_SPEED;
+		y-=dY*Main.PROJECTILE_BASE_SPEED;
+	}
+
+	protected void damage(Enemy e) {
+		double damage = life;
+		if (e.isMetal()&&creator instanceof TowerBomb) {
+			damage*=((TowerBomb) creator).getMetalBonusDamage();
+		}
+		if (e.getHealth()>0&&damage>0) {
+			double temp = damage;
+			if (e.getHealth()>=damage) {
+				creator.popCount+=damage;
+			}
+			else {
+				creator.popCount+=e.getHealth();
+				Player.changeMoney(e.getHealth());
+			}
+			life-=e.getHealth();
+			e.hit(temp, true);
+		}
+	}
+
+	protected void markDestroy() {
+		destroy = true;
+	}
+
+	public double getDdX() {
+		return ddX;
+	}
+
+	public double getDdY() {
+		return ddY;
+	}
+
+	public double getdX() {
+		return dX;
+	}
+
+	public double getdY() {
+		return dY;
+	}
+
+	public double getLife() {
+		return life;
+	}
+
+	public double getX() {
+		return x;
+	}
+
+	public double getY() {
+		return y;
+	}
+}
