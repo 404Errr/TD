@@ -13,7 +13,6 @@ public class Cursor {
 	private static Tower selectedTower, towerToPlace;
 
 	public static void click(MouseEvent e, boolean down) {
-		boolean deselectSelectedTower = false;
 		Tower towerToSelect = selectedTower;
 		Button b;
 		if (down) {//if click was down (not up)
