@@ -34,6 +34,11 @@ public class Window extends JFrame {
 		bounds = Util.getRect(0, 0, Main.getWINDOW_WIDTH()-6, Main.getWINDOW_HEIGHT()-28);
 		frame.setVisible(true);
 	}
+
+	public static void centerWindow() {
+		System.out.println("Window Centered");
+		frame.setLocationRelativeTo(null);
+	}
 }
 
 
