@@ -16,7 +16,8 @@ public class TowerIce extends Tower {
 			new TowerUpgrade(TowerUpgradeType.MAX_COOLDOWN, 300, -10d, true, false, 5),
 			new TowerUpgrade(TowerUpgradeType.HIT_COUNT, 100, -10d, true, false, 5),
 			new TowerUpgrade(TowerUpgradeType.RANGE, 50, 1*Main.getScale(), true, false, 2),
-			new TowerUpgrade(TowerUpgradeType.DOES_DAMAGE, 30, new TowerUpgrade(TowerUpgradeType.DAMAGE, 20, 1, true, false, 3))
+			new TowerUpgrade(TowerUpgradeType.DOES_DAMAGE, 30,
+					new TowerUpgrade(TowerUpgradeType.DAMAGE, 20, 1, true, false, 3))
 		));
 		maxCooldown = TOWER_ICE_BASE_COOLDOWN;
 		hitCount = TOWER_ICE_BASE_HIT_COUNT;

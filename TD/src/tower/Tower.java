@@ -215,7 +215,7 @@ public abstract class Tower implements Data {
 		case BULLET_COUNT:
 			bulletCount = upgrade.getNewValue(bulletCount);
 			break;
-		case GUN_SPREAD:
+		case BULLET_SPREAD:
 			gunSpread = upgrade.getNewValue(gunSpread);
 			break;
 		case DAMAGE:

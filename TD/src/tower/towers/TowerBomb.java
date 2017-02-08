@@ -29,7 +29,6 @@ public class TowerBomb extends Tower {
 		if (gunCooldown<=0) {
 			gunCooldown = maxCooldown;
 			ProjectileManager.projectiles.add(new ProjectileBomb(this, x+towerSize/2, y+towerSize/2, damage, explosionRadius, canDamageMetal, gunAngle, TOWER_BULLET_NORMAL_INITIAL_VELOCITY, TOWER_BULLET_NORMAL_ACCELERATION));
-			//ProjectileManager.projectiles.add(new ProjectileBullet(this, x+towerSize/2, y+towerSize/2, damage, canDamageMetal, gunAngle, TOWER_BULLET_NORMAL_INITIAL_VELOCITY, TOWER_BULLET_NORMAL_ACCELERATION));
 		}
 	}
 

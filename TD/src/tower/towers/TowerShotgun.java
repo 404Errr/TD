@@ -1,5 +1,7 @@
 package tower.towers;
 
+import java.util.Arrays;
+
 import enemy.Enemy;
 import enemy.EnemyManager;
 import main.Main;
@@ -8,10 +10,17 @@ import projectile.ProjectileBullet;
 import projectile.ProjectileManager;
 import tower.Tower;
 import tower.TowerUpgrade;
+import tower.TowerUpgradeType;
 
 public class TowerShotgun extends Tower {
 	public TowerShotgun(int x, int y, boolean placed) {
 		super(x, y, placed, TOWER_SHOTGUN_SIZE, TOWER_SHOTGUN_BASE_RANGE, TOWER_SHOTGUN_VALUE);
+		availableUpgrades.addAll(Arrays.asList(
+			new TowerUpgrade(TowerUpgradeType.MAX_COOLDOWN, 300, -10d, true, false, 5),
+			new TowerUpgrade(TowerUpgradeType.RANGE, 50, 1*Main.getScale(), true, false, 2),
+			new TowerUpgrade(TowerUpgradeType.BULLET_COUNT, 20, 2, true, false, 3),
+			new TowerUpgrade(TowerUpgradeType.DAMAGE, 20, 1, true, false, 3)
+		));
 		maxCooldown = TOWER_SHOTGUN_BASE_COOLDOWN;
 		damage = TOWER_SHOTGUN_BASE_DAMAGE;
 		bulletCount = TOWER_SHOTGUN_BASE_BULLET_COUNT;
