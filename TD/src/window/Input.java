@@ -31,6 +31,11 @@ class Input implements KeyListener, MouseMotionListener, MouseListener, MouseWhe
 		if (e.getKeyCode()==KeyEvent.VK_M) {
 			Player.changeMoney(MONEY_CHEAT_AMOUNT);
 		}
+		if (e.getKeyCode()==KeyEvent.VK_N) {
+			if (Player.canAfford(MONEY_CHEAT_AMOUNT)) {
+				Player.changeMoney(-MONEY_CHEAT_AMOUNT);
+			}
+		}
 		if (e.getKeyCode()==KeyEvent.VK_C) {
 			Window.centerWindow();
 		}

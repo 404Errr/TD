@@ -6,7 +6,7 @@ import java.awt.GraphicsEnvironment;
 import data.Data;
 import level.Level;
 import level.LevelLayout;
-import round.RoundManager;
+import round.RoundConfig;
 import window.Window;
 import window.ui.UI;
 
@@ -27,8 +27,9 @@ import window.ui.UI;
  * L = loop toggle
  * O = toggle money doing things
  * M = cheat in money
+ * N = cheat out money
  * up/down arrow = change health of first enemy
- 
+
  * button A = spawn 9 turrets in grid
  * button B = spawn 2 turrets near path
  * button C = spawn 4 turrets near path
@@ -72,7 +73,7 @@ public class Main implements Data {
 
 	public static void main(String[] args) {
 		level = new Level(LevelLayout.layout);//create the level
-		RoundManager.init();//generate rounds from the config file
+		RoundConfig.init();//generate rounds from the config file
 		updateLoop = new UpdateLoop();//create the loop
 		Window.init();//create the window
 		UI.init();//initialize the ui
