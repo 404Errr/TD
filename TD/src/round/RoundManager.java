@@ -24,10 +24,6 @@ public class RoundManager implements Data {
 		else return roundNumber;
 	}
 
-	public static void init() {
-		RoundConfig.init();
-	}
-
 	public static void setStartRound(boolean startRound) {
 		RoundManager.startRound = startRound;
 	}
@@ -49,7 +45,7 @@ public class RoundManager implements Data {
 		else {
 			firstRound = false;
 		}
-		System.out.println("Round number: "+getRoundNumber(false));
+		System.out.println("Round ID: "+getRoundNumber(false));
 		if (roundNumber<rounds.size()) {
 			currentRound = rounds.get(roundNumber);
 			if (currentRound.getSpawns().size()==0) {
