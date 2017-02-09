@@ -22,8 +22,13 @@ public class EnemyManager implements Data {
 	}
 
 	public static void spawnEnemy(Enemy enemy) {
-		enemy.setVisible(true);
-		enemies.add(enemy);
+		if (canSpawnEnemies()) {
+			enemy.setVisible(true);
+			enemies.add(enemy);
+		}
+		else {
+			System.out.println("Can't spawn "+enemy);
+		}
 	}
 
 	public static void tick() {

@@ -136,7 +136,7 @@ class Renderer extends JPanel implements Data {
 		g.setColor(Color.BLACK);
 		g.draw(t.getBounds());
 		g.setColor(COLOR_TOWER_RANGE);
-		if (floating&&(!t.isPlaceable()||!Player.canAfford(t.getValue()))) {
+		if (floating&&(!t.isPlaceable()||!Player.canAfford(t.getValue())||!TowerManager.canSpawnTowers())) {
 			g.setColor(COLOR_TOWER_RANGE_INVALID);
 		}
 		g.setStroke(new BasicStroke(1));

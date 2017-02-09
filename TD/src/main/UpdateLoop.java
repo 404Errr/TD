@@ -54,21 +54,20 @@ public class UpdateLoop implements Runnable {
 			UI.tick();
 			if (!Main.PAUSED) {
 				RoundManager.tick();
-				for (int i = 0;i<EnemyManager.getEnemies().size();i++) if (EnemyManager.getEnemies().get(i).tick()) {
+				for (int i = EnemyManager.getEnemies().size()-1;i>=0;i--) if (EnemyManager.getEnemies().get(i).tick()) {
 					System.out.println("-Deleted "+EnemyManager.getEnemies().get(i));
 					EnemyManager.getEnemies().remove(i);
 				}
 				EnemyManager.tick();
-				for (int i = 0;i<ProjectileManager.getProjectiles().size();i++) if (ProjectileManager.getProjectiles().get(i).tick()) {
+				for (int i = ProjectileManager.getProjectiles().size()-1;i>=0;i--) if (ProjectileManager.getProjectiles().get(i).tick()) {
 					ProjectileManager.getProjectiles().remove(i);
 				}
 				ProjectileManager.tick();
-				for (int i = 0;i<TowerManager.getTowers().size();i++) if (TowerManager.getTowers().get(i).tick()) {
+				for (int i = TowerManager.getTowers().size()-1;i>=0;i--) if (TowerManager.getTowers().get(i).tick()) {
 					TowerManager.getTowers().remove(i);
 				}
 				TowerManager.tick();
 			}
-			System.out.println("Enemies "+EnemyManager.canSpawnEnemies()+" Towers: "+TowerManager.canSpawnTowers()+" Projectiles: "+ProjectileManager.canSpawnProjectiles());
 		}
 		catch (Exception e) {
 			UpdateLoop.setSpeedFactor(1.0);

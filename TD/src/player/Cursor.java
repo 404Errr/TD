@@ -38,7 +38,7 @@ public class Cursor {
 				if (towerToPlace!=null&&UI.getBounds().contains(x, y)) {//if is holding tower and clicked in ui area
 					deselectTowerToPlace = true;//stop holding the tower
 				}
-				if (towerToPlace!=null&&towerToPlace.isPlaceable()&&Player.canAfford(towerToPlace.getValue())) {//if can place it
+				if (towerToPlace!=null&&towerToPlace.isPlaceable()&&Player.canAfford(towerToPlace.getValue())&&TowerManager.canSpawnTowers()) {//if can place it
 					towerToPlace.place();//place it
 					deselectTowerToPlace = true;//stop holding the tower
 				}

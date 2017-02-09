@@ -21,6 +21,11 @@ public class ProjectileManager implements Data {
 	}
 
 	public static void addProjectile(Projectile projectile) {
-		projectiles.add(projectile);
+		if (canSpawnProjectiles()) {
+			projectiles.add(projectile);
+		}
+		else {
+			System.out.println("Can't spawn "+projectile);
+		}
 	}
 }
