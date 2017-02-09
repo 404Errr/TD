@@ -10,7 +10,7 @@ import round.RoundConfig;
 import window.Window;
 import window.ui.UI;
 
-/* stuff and things:
+/* controls:
  * C = center window
  * P = toggle PAUSE (or button)
  * SPACE = hold PAUSE
