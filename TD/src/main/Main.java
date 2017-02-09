@@ -30,11 +30,6 @@ import window.ui.UI;
  * N = cheat out money
  * up/down arrow = change health of first enemy
 
- * button A = spawn 9 turrets in grid
- * button B = spawn 2 turrets near path
- * button C = spawn 4 turrets near path
- * button D = spawn 2 turrets above one another
- *
  * use with minor caution: (probably broken anyway)
  * - = 1x speed
  * = = 2x speed
