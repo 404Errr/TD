@@ -48,10 +48,6 @@ class Renderer extends JPanel implements Data {
 			e = EnemyManager.enemies.get(i);
 			if (e.isVisible()) {
 				drawEnemy(g, e);
-//				g.setStroke(new BasicStroke(1));
-//				g.setColor(Color.magenta);
-//				if (e.hitbox!=null) g.draw(e.hitbox);
-
 				g.setFont(new Font("Helvetica", Font.PLAIN, Main.getScale()/2));
 				g.setColor(Color.BLACK);
 				if (Main.PAUSED) {
@@ -59,7 +55,6 @@ class Renderer extends JPanel implements Data {
 				}
 			}
 		}
-
 	}
 
 	private void drawEnemy(Graphics2D g, Enemy e) {
@@ -200,9 +195,13 @@ class Renderer extends JPanel implements Data {
 				}
 			}
 		}
-
 		drawPlayerStats(g);
 	}
+
+//	private void drawUPS(Graphics2D g) {
+//		g.setColor(COLOR_UI_UPS);
+//		//draw ups
+//	}
 
 	@Override
 	public void paint(Graphics g0) {
@@ -214,9 +213,6 @@ class Renderer extends JPanel implements Data {
 		drawProjectiles(g);
 		drawUI(g);
 		drawFloatingTower(g);
-//		g.setColor(Color.BLACK);
-//		g.setStroke(new BasicStroke(1));
-//		g.drawRect((int)UpgradeUI.bounds0.getCenterX()-2, (int)UpgradeUI.bounds0.getCenterY()-2, 5, 5);
-//		g.draw(UpgradeUI.bounds0);
+//		drawUPS(g);
 	}
 }

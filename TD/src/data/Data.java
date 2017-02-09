@@ -49,6 +49,7 @@ public interface Data {
 	static final Font FONT_UI_TEXT = new Font("Helvetica", Font.BOLD, Main.getScale()*5/4);
 	static final Font FONT_UI_HEALTH = new Font("Helvetica", Font.BOLD, Main.getScale()*5/4);
 
+	static final Color COLOR_UI_UPS = new Color(255,255,0,255);
 	static final Color COLOR_UI_TEXT = new Color(255,255,255,255);
 	static final Color COLOR_UI_HEALTH = new Color(255,0,0,255);
 

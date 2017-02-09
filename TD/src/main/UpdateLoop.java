@@ -9,12 +9,12 @@ import window.Window;
 import window.ui.UpgradeUI;
 
 public class UpdateLoop implements Runnable {
-	private static double speedFactor = 1.0;
+	private static double speedFactor = 1.0;//speed multiplier (0.5 is 2x speed)
 
 	@Override
 	public void run() {
-		System.out.println("UPS: "+Main.getUPS());
-		double delay = 1000000000d/Main.getUPS();
+		System.out.println("UPS: "+Main.getUPS());//prints ups
+		double delay = 1000000000d/Main.getUPS();//gets nanosecond delay per frame
 		long currentTime, lastTime = 0;
 		while (Main.isRunning()) {
 			currentTime = System.nanoTime();//makes currentTime the current time
@@ -24,7 +24,6 @@ public class UpdateLoop implements Runnable {
 				lastTime = System.nanoTime();//makes lastTime the current time
 			}
 		}
-
 	}
 
 //	@Override
