@@ -12,7 +12,7 @@ public class UpgradeButton extends Button implements Data {
 	}
 
 	@Override
-	public void press(boolean down) {
+	public void updatePress(boolean down) {
 		if (down) {//if pressed
 			pressed = true;
 			System.out.println("Upgrade "+UpgradeUI.getButtons().indexOf(this)+" pressed");
@@ -21,7 +21,6 @@ public class UpgradeButton extends Button implements Data {
 		else {
 			pressed = false;
 		}
-		UpgradeUI.setRefresh();
 	}
 }
 

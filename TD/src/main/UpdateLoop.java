@@ -6,6 +6,7 @@ import projectile.ProjectileManager;
 import round.RoundManager;
 import tower.TowerManager;
 import window.Window;
+import window.ui.UI;
 import window.ui.UpgradeUI;
 
 public class UpdateLoop implements Runnable {
@@ -45,11 +46,13 @@ public class UpdateLoop implements Runnable {
 	}
 
 	private void update() {
-		if (Cursor.getTowerToPlace()!=null) {
-			Cursor.getTowerToPlace().tick();
-		}
-		if (!Main.PAUSED) {
-			try {
+		try {
+			if (Cursor.getTowerToPlace()!=null) {
+				Cursor.getTowerToPlace().tick();
+			}
+			UpgradeUI.tick();
+			UI.tick();
+			if (!Main.PAUSED) {
 				RoundManager.tick();
 				for (int i = 0;i<EnemyManager.enemies.size();i++) if (EnemyManager.enemies.get(i).tick()) {
 					System.out.println("-Deleted "+EnemyManager.enemies.get(i));
@@ -62,14 +65,12 @@ public class UpdateLoop implements Runnable {
 				for (int i = 0;i<TowerManager.towers.size();i++) if (TowerManager.towers.get(i).tick()) {
 					TowerManager.towers.remove(i);
 				}
-				UpgradeUI.tick();
 			}
-			catch (Exception e) {
-				UpdateLoop.setSpeedFactor(1.0);
-				System.out.println("-UPDATE ERROR");
-				e.printStackTrace();
-
-			}
+		}
+		catch (Exception e) {
+			UpdateLoop.setSpeedFactor(1.0);
+			System.out.println("-UPDATE ERROR");
+			e.printStackTrace();
 		}
 	}
 }

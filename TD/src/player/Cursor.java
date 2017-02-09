@@ -45,26 +45,26 @@ public class Cursor {
 			}
 		}
 		if (towerToPlace==null) {//update buttons only if not holding anything
-			for (int i = 0;i<UI.getButtons().size();i++) {
+			for (int i = 0;i<UI.getButtons().size();i++) {//for all UI buttons
 				b = UI.getButtons().get(i);
 				if (b.getBounds().contains(x, y)&&e.getButton()==MouseEvent.BUTTON1) {//if cursor is on button and was leftclick
 					towerToSelect = null;//deselect if pressed a non upgrade button
-					b.press(down);//press the button if click was down, depress if up
+					b.updatePress(down);//press the button if click was down
 				}
 				else {
-					b.press(false);//depress the button
+					b.updatePress(false);
 				}
 			}
 		}
 		if (UpgradeUI.isOpen()) {//if needs to update the upgrade ui
-			for (int i = 0;i<UpgradeUI.getButtons().size();i++) {
+			for (int i = 0;i<UpgradeUI.getButtons().size();i++) {//for all upgrade buttons
 				b = UpgradeUI.getButtons().get(i);
 				if (b.getBounds().contains(x, y)&&e.getButton()==MouseEvent.BUTTON1) {//if cursor is on button and was leftclick
-					b.press(down);//press the button if click was down, depress if up
-					towerToSelect = selectedTower;
+					b.updatePress(down);//press the button if click was down
+					towerToSelect = selectedTower;//don't change selectedTower
 				}
 				else {
-					b.press(false);//depress the button
+					b.updatePress(false);
 				}
 			}
 		}
@@ -119,12 +119,6 @@ public class Cursor {
 	public static void updateMouse(MouseEvent e) {
 		x = e.getX()-3;//offset 3
 		y = e.getY()-25;//offset 25
-		for (int i = 0;i<UI.getButtons().size();i++) {//ui buttons
-			UI.getButtons().get(i).tick();//tick the button
-		}
-		for (int i = 0;i<UpgradeUI.getButtons().size();i++) {//upgrade ui buttons
-			UpgradeUI.getButtons().get(i).tick();//tick the button
-		}
 	}
 
 	public static int getX() {

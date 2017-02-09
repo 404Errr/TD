@@ -30,4 +30,10 @@ public class UI {
 		}
 		System.out.println();
 	}
+
+	public static void tick() {
+		for (int i = 0;i<buttons.size();i++) {//tick the buttons
+			buttons.get(i).tick();
+		}
+	}
 }

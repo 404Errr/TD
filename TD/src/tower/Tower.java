@@ -225,8 +225,6 @@ public abstract class Tower implements Data {
 			break;
 		case HIT_COUNT:
 			hitCount = upgrade.getNewValue(hitCount);
-
-
 		default:
 			break;
 

@@ -67,7 +67,6 @@ public class Main implements Data {
 	private static UpdateLoop updateLoop;
 
 	public static void main(String[] args) {
-		System.out.println(ENEMY_BASE_SPEED);
 		level = new Level(LevelLayout.layout);//create the level
 		RoundConfig.init();//generate rounds from the config file
 		updateLoop = new UpdateLoop();//create the loop

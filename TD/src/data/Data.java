@@ -57,8 +57,8 @@ public interface Data {
 	static final Color COLOR_UI_BUTTON = new Color(50,50,255,255);
 	static final Color COLOR_UI_BUTTON_HOVERED = new Color(100,100,255,255);
 
-	static final Color COLOR_TOWER_RANGE = new Color(0,0,0,70);
-	static final Color COLOR_TOWER_RANGE_INVALID = new Color(255,0,0,70);
+	static final Color COLOR_TOWER_RANGE = new Color(0,0,0,50);
+	static final Color COLOR_TOWER_RANGE_INVALID = new Color(255,75,75,50);
 
 	static final Color COLOR_NORMAL_ENEMY = new Color(255,0,0,255);
 	static final Color COLOR_CAMO_ENEMY = new Color(255,255,0,255);

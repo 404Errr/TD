@@ -234,7 +234,7 @@ public class Button implements Data {
 		return pressed;
 	}
 
-	public void press(boolean down) {
+	public void updatePress(boolean down) {
 		if (down) {
 			pressed = true;
 			System.out.print("button "+UI.getButtons().indexOf(this)+" pressed:\n\t");
