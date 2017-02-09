@@ -9,7 +9,7 @@ public class TowerManager implements Data {
 	private static boolean canSpawntowers;
 
 	public static void tick() {
-		canSpawntowers = towers.size()>SAFE_TOWER_COUNT;
+		canSpawntowers = towers.size()<=SAFE_TOWER_COUNT;
 	}
 
 	public static ArrayList<Tower> getTowers() {

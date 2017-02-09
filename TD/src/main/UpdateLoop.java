@@ -68,6 +68,7 @@ public class UpdateLoop implements Runnable {
 				}
 				TowerManager.tick();
 			}
+			System.out.println("Enemies "+EnemyManager.canSpawnEnemies()+" Towers: "+TowerManager.canSpawnTowers()+" Projectiles: "+ProjectileManager.canSpawnProjectiles());
 		}
 		catch (Exception e) {
 			UpdateLoop.setSpeedFactor(1.0);

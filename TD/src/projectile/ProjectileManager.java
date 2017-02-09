@@ -9,7 +9,7 @@ public class ProjectileManager implements Data {
 	private static boolean canSpawnProjectiles;
 
 	public static void tick() {
-		canSpawnProjectiles = projectiles.size()>SAFE_PROJECTILE_COUNT;
+		canSpawnProjectiles = projectiles.size()<=SAFE_PROJECTILE_COUNT;
 	}
 
 	public static boolean canSpawnProjectiles() {
@@ -18,5 +18,9 @@ public class ProjectileManager implements Data {
 
 	public static ArrayList<Projectile> getProjectiles() {
 		return projectiles;
+	}
+
+	public static void addProjectile(Projectile projectile) {
+		projectiles.add(projectile);
 	}
 }

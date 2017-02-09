@@ -29,7 +29,7 @@ public class TowerSprayer extends Tower {
 		if (gunCooldown<=0) {
 			gunCooldown = maxCooldown;
 			for (int i = 0;i<bulletCount;i++) {
-				ProjectileManager.getProjectiles().add(new ProjectilePellet(this, x+towerSize/2, y+towerSize/2, damage, canDamageMetal, i*(360/bulletCount), getTowerRange()/2, TOWER_BULLET_NORMAL_INITIAL_VELOCITY, TOWER_BULLET_NORMAL_ACCELERATION));
+				ProjectileManager.addProjectile(new ProjectilePellet(this, x+towerSize/2, y+towerSize/2, damage, canDamageMetal, i*(360/bulletCount), getTowerRange()/2, TOWER_BULLET_NORMAL_INITIAL_VELOCITY, TOWER_BULLET_NORMAL_ACCELERATION));
 			}
 		}
 	}
