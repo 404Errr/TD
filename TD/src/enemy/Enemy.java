@@ -4,8 +4,8 @@ import java.awt.geom.Rectangle2D;
 
 import data.Data;
 import main.Main;
-import main.Player;
 import main.Util;
+import player.Player;
 
 public class Enemy implements Comparable<Enemy>, Data {
 	private int x, y, regenTimer, icedTimer;

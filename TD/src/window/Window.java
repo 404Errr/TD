@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import graphics.Renderer;
 import main.Main;
 import main.Util;
+import player.Input;
 
 @SuppressWarnings("serial")
 public class Window extends JFrame {

@@ -6,7 +6,7 @@ import data.Data;
 import enemy.Enemy;
 import enemy.EnemyManager;
 import main.Main;
-import main.Player;
+import player.Player;
 import tower.Tower;
 import tower.towers.TowerBomb;
 

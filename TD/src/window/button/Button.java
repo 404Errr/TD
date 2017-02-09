@@ -4,8 +4,8 @@ import java.awt.Font;
 import java.awt.Rectangle;
 
 import data.Data;
-import main.Cursor;
 import main.Main;
+import player.Cursor;
 import round.RoundManager;
 import tower.towers.TowerBomb;
 import tower.towers.TowerIce;

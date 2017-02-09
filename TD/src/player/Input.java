@@ -1,4 +1,4 @@
-package window;
+package player;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -13,15 +13,14 @@ import data.Data;
 import enemy.Enemy;
 import enemy.EnemyManager;
 import enemy.EnemyType;
-import main.Cursor;
 import main.Main;
-import main.Player;
 import main.UpdateLoop;
 import tower.Tower;
 import tower.TowerManager;
+import window.Window;
 import window.button.Button;
 
-class Input implements KeyListener, MouseMotionListener, MouseListener, MouseWheelListener, Data {
+public class Input implements KeyListener, MouseMotionListener, MouseListener, MouseWheelListener, Data {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if (!EnemyManager.enemies.isEmpty()&&e.getKeyCode()==KeyEvent.VK_UP) {
@@ -132,11 +131,11 @@ class Input implements KeyListener, MouseMotionListener, MouseListener, MouseWhe
 	@Override
 	public void mouseExited(MouseEvent e) {}
 	@Override
-	public void mouseMoved(MouseEvent e) {main.Cursor.updateMouse(e);}
+	public void mouseMoved(MouseEvent e) {player.Cursor.updateMouse(e);}
 	@Override
-	public void mousePressed(MouseEvent e) {main.Cursor.updateMouse(e);main.Cursor.click(e, true);}
+	public void mousePressed(MouseEvent e) {player.Cursor.updateMouse(e);player.Cursor.click(e, true);}
 	@Override
-	public void mouseReleased(MouseEvent e) {main.Cursor.updateMouse(e);main.Cursor.click(e, false);}
+	public void mouseReleased(MouseEvent e) {player.Cursor.updateMouse(e);player.Cursor.click(e, false);}
 	@Override
 	public void mouseWheelMoved(MouseWheelEvent arg0) {}
 }

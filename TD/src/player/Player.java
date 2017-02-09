@@ -1,6 +1,7 @@
-package main;
+package player;
 
 import data.Data;
+import main.Main;
 
 public class Player implements Data {
 	private static double playerMoney = STARTING_MONEY, playerHealth = STARTING_LIVES;

@@ -8,10 +8,10 @@ import data.Data;
 import enemy.Enemy;
 import enemy.EnemyManager;
 import level.Tile;
-import main.Cursor;
 import main.Main;
-import main.Player;
 import main.Util;
+import player.Cursor;
+import player.Player;
 import window.Window;
 import window.ui.UI;
 

@@ -4,10 +4,10 @@ import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 
 import data.Data;
-import main.Cursor;
 import main.Main;
-import main.Player;
 import main.Util;
+import player.Cursor;
+import player.Player;
 import tower.Tower;
 import tower.TowerUpgrade;
 import window.Window;

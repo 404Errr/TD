@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import data.Data;
 import enemy.EnemyManager;
 import main.Main;
-import main.Player;
+import player.Player;
 
 public class RoundManager implements Data {
 	private static ArrayList<Round> rounds = new ArrayList<>();
