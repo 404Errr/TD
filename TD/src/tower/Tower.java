@@ -43,7 +43,7 @@ public abstract class Tower implements Data {
 	}
 
 	public boolean anyInRange() {
-		for (int i = 0;i<EnemyManager.enemies.size();i++) if (inRange(EnemyManager.enemies.get(i))&&EnemyManager.enemies.get(i).canSee(canSeeCamo)) return true;
+		for (int i = 0;i<EnemyManager.getEnemies().size();i++) if (inRange(EnemyManager.getEnemies().get(i))&&EnemyManager.getEnemies().get(i).canSee(canSeeCamo)) return true;
 		return false;
 	}
 
@@ -149,8 +149,8 @@ public abstract class Tower implements Data {
 
 	public boolean isPlaceable() {
 		if (UI.getBounds().intersects(hitbox)||!Window.bounds.contains(hitbox)) return false;
-		for (int i = 0;i<TowerManager.towers.size();i++) {
-			Tower t = TowerManager.towers.get(i);
+		for (int i = 0;i<TowerManager.getTowers().size();i++) {
+			Tower t = TowerManager.getTowers().get(i);
 			if (hitbox.intersects(t.hitbox)) return false;
 		}
 		Tile t;
@@ -174,7 +174,7 @@ public abstract class Tower implements Data {
 		}
 		bounds = Util.getCircle(x, y, towerSize, false);
 		hitbox = Util.getRect(x, y, towerSize);
-		TowerManager.towers.add(this);
+		TowerManager.addTower(this);
 		System.out.println(name+" placed: "+x+","+y+"\tFor: "+value);
 	}
 

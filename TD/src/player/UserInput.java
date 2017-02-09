@@ -23,11 +23,11 @@ import window.button.Button;
 public class UserInput implements KeyListener, MouseMotionListener, MouseListener, MouseWheelListener, Data {
 	@Override
 	public void keyPressed(KeyEvent e) {
-		if (!EnemyManager.enemies.isEmpty()&&e.getKeyCode()==KeyEvent.VK_UP) {
-			EnemyManager.enemies.get(0).hit(-1, false);
+		if (!EnemyManager.getEnemies().isEmpty()&&e.getKeyCode()==KeyEvent.VK_UP) {
+			EnemyManager.getEnemies().get(0).hit(-1, false);
 		}
-		if (!EnemyManager.enemies.isEmpty()&&e.getKeyCode()==KeyEvent.VK_DOWN&&EnemyManager.enemies.get(0).getHealth()>1) {
-			EnemyManager.enemies.get(0).hit(1, false);
+		if (!EnemyManager.getEnemies().isEmpty()&&e.getKeyCode()==KeyEvent.VK_DOWN&&EnemyManager.getEnemies().get(0).getHealth()>1) {
+			EnemyManager.getEnemies().get(0).hit(1, false);
 		}
 		if (e.getKeyCode()==KeyEvent.VK_M) {
 			Player.changeMoney(MONEY_CHEAT_AMOUNT);
@@ -66,44 +66,43 @@ public class UserInput implements KeyListener, MouseMotionListener, MouseListene
 			UpdateLoop.changeSpeedFactor(0.8);
 		}
 		if (e.getKeyCode()==KeyEvent.VK_1) {
-			EnemyManager.enemies.add(new enemy.Enemy(2,EnemyType.NORMAL, true));
+			EnemyManager.getEnemies().add(new enemy.Enemy(2,EnemyType.NORMAL, true));
 		}
 		if (e.getKeyCode()==KeyEvent.VK_2) {
-			EnemyManager.enemies.add(new enemy.Enemy(2,EnemyType.CAMO, true));
+			EnemyManager.getEnemies().add(new enemy.Enemy(2,EnemyType.CAMO, true));
 		}
 		if (e.getKeyCode()==KeyEvent.VK_3) {
-			EnemyManager.enemies.add(new enemy.Enemy(2,EnemyType.METAL, true));
+			EnemyManager.getEnemies().add(new enemy.Enemy(2,EnemyType.METAL, true));
 		}
 		if (e.getKeyCode()==KeyEvent.VK_4) {
-			EnemyManager.enemies.add(new enemy.Enemy(2,EnemyType.REGEN, true));
+			EnemyManager.getEnemies().add(new enemy.Enemy(2,EnemyType.REGEN, true));
 		}
 		if (e.getKeyCode()==KeyEvent.VK_5) {
-			EnemyManager.enemies.add(new enemy.Enemy(2,EnemyType.CAMOMETAL, true));
+			EnemyManager.getEnemies().add(new enemy.Enemy(2,EnemyType.CAMOMETAL, true));
 		}
 		if (e.getKeyCode()==KeyEvent.VK_6) {
-			EnemyManager.enemies.add(new enemy.Enemy(2,EnemyType.CAMOREGEN, true));
+			EnemyManager.getEnemies().add(new enemy.Enemy(2,EnemyType.CAMOREGEN, true));
 		}
 		if (e.getKeyCode()==KeyEvent.VK_7) {
-			EnemyManager.enemies.add(new enemy.Enemy(2,EnemyType.METALREGEN, true));
+			EnemyManager.getEnemies().add(new enemy.Enemy(2,EnemyType.METALREGEN, true));
 		}
 		if (e.getKeyCode()==KeyEvent.VK_8) {
-			EnemyManager.enemies.add(new enemy.Enemy(2,EnemyType.CAMOMETALREGEN, true));
+			EnemyManager.getEnemies().add(new enemy.Enemy(2,EnemyType.CAMOMETALREGEN, true));
 		}
 		if (e.getKeyCode()==KeyEvent.VK_J) {
-			ArrayList<Tower> towers = tower.TowerManager.towers;
+			ArrayList<Tower> towers = tower.TowerManager.getTowers();
 			for (int i = 0;i<towers.size();i++) {
 				Tower tower = towers.get(i);
 				tower.destroy(true);
 			}
-			System.out.println("Deleted "+TowerManager.towers.size()+" towers");
+			System.out.println("Deleted "+TowerManager.getTowers().size()+" towers");
 		}
 		if (e.getKeyCode()==KeyEvent.VK_K) {
-			ArrayList<Enemy> enemies = EnemyManager.enemies;
-			for (int i = 0;i<enemies.size();i++) {
-				Enemy enemy = enemies.get(i);
+			for (int i = 0;i<EnemyManager.getEnemies().size();i++) {
+				Enemy enemy = EnemyManager.getEnemies().get(i);
 				enemy.markDestroy();
 			}
-			System.out.println("Deleted "+EnemyManager.enemies.size()+" enemies");
+			System.out.println("Deleted "+EnemyManager.getEnemies().size()+" enemies");
 		}
 		if (e.getKeyCode()==KeyEvent.VK_S) {
 			System.out.print("S key pressed:\n\t");

@@ -121,10 +121,11 @@ public class UpgradeUI implements Data {
 		}
 	}
 
+	private final static int DISTANCE = 6;
 	public static void setNewPos(int x, int y) {
 		Rectangle2D bounds;
 		int attempts = 0;//prevent infinite looping if it can't find a position
-		double a = 90, dA = 180, xOffset, yOffset, distance = Main.getScale()*3;//the current angle, the current angle increment (180 to check above after below (only once)), where it is relative to the given postion (x), where it is relative to the given postion (y), how far away it will be from the given position
+		double a = 90, dA = 180, xOffset, yOffset, distance = Main.getScale()*DISTANCE;//the current angle, the current angle increment (180 to check above after below (only once)), where it is relative to the given postion (x), where it is relative to the given postion (y), how far away it will be from the given position
 		do {
 			xOffset = Util.getXComp(a, distance);
 			yOffset = Util.getYComp(a, distance);

@@ -26,8 +26,8 @@ public class ProjectileBomb extends Projectile {
 	protected void attemptHit() {
 		Enemy e;
 		hitLine = new Line2D.Double((int)x, (int)y, (int)x-dX, (int)y-dY);
-		for (int i = 0;i<EnemyManager.enemies.size();i++) {
-			e = EnemyManager.enemies.get(i);
+		for (int i = 0;i<EnemyManager.getEnemies().size();i++) {
+			e = EnemyManager.getEnemies().get(i);
 			if (life>0&&!e.isDestroy()&&e.canDamage(canDamageMetal)) {
 				if (hitLine.intersects(e.getHitbox())) {
 					hit(e.getY(), e.getX());
@@ -39,9 +39,9 @@ public class ProjectileBomb extends Projectile {
 
 	private void hit(int x, int y) {
 		inRange.clear();
-		for (int i = 0;i<EnemyManager.enemies.size();i++) {
-			if (Util.distance(this.y, this.x, EnemyManager.enemies.get(i).getX()+ENEMY_SIZE/2, EnemyManager.enemies.get(i).getY()+ENEMY_SIZE/2)<=explosionRadius) {
-				inRange.add(EnemyManager.enemies.get(i));
+		for (int i = 0;i<EnemyManager.getEnemies().size();i++) {
+			if (Util.distance(this.y, this.x, EnemyManager.getEnemies().get(i).getX()+ENEMY_SIZE/2, EnemyManager.getEnemies().get(i).getY()+ENEMY_SIZE/2)<=explosionRadius) {
+				inRange.add(EnemyManager.getEnemies().get(i));
 			}
 		}
 		int i = 0;

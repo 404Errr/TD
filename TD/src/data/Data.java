@@ -37,12 +37,6 @@ public interface Data {
 	static final double TOWER_SPRAYER_VALUE = 300;
 	static final double TOWER_ICE_VALUE = 300;
 
-	static final double STARTING_MONEY = 10000/*750*/, STARTING_LIVES = 100;
-	static final double ROUND_MONEY_REWARD = 100, MONEY_CHEAT_AMOUNT = 100;
-	static final double TOWER_SELL_RATE = 0.8d;
-
-	static final int ENEMY_SIZE = Main.getScale(), ENEMY_HITBOX_SIZE = Main.getScale()*3/2;
-	static final int ENEMY_REGEN_RATE = 1000;//millis
 
 	static final int UPGRADE_UI_SIZE = Main.getScale()*3/2, UPGRADE_UI_PADDING = Main.getScale()/2;
 
@@ -71,4 +65,27 @@ public interface Data {
 	static final Color COLOR_0 = new Color(200,200,200,255);//light gray
 	static final Color COLOR_1 = new Color(0,0,0,255);//black
 	static final Color COLOR_PATH = new Color(0,0,0,50);//transparent black
+
+	static final double STARTING_MONEY = 10000/*750*/, STARTING_LIVES = 100;
+	static final double ROUND_MONEY_REWARD = 100, MONEY_CHEAT_AMOUNT = 100;
+
+	static final double TOWER_SELL_RATE = 0.8d;
+
+	static final int ENEMY_SIZE = Main.getScale(), ENEMY_HITBOX_SIZE = Main.getScale()*3/2;
+	static final int ENEMY_REGEN_RATE = 1000;//millis
+
+	static final int SAFE_ENEMY_COUNT = 100, SAFE_TOWER_COUNT = 100, SAFE_PROJECTILE_COUNT = 50;
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
