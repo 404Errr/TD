@@ -56,8 +56,8 @@ public class Main implements Data {
 		System.out.println("WxH: "+LevelLayout.layout[0].length+"x"+LevelLayout.layout.length+" WxH: "+width+"x"+height+" Screen Size:"+screenSize+" Layout Size:"+layoutSize+" Scale:"+SCALE);
 	}
 
-	public static final int UPS = 60, ENEMY_SIZE = (int)(SCALE*2d/3d);
-	public static final double ENEMY_SPEED = 0.45d, ENEMY_BASE_SPEED = ENEMY_SPEED*SCALE/20d*120d/UPS;//0.65d;
+	public static final int UPS = 10, ENEMY_SIZE = (int)(SCALE*2d/3d);
+	public static final double ENEMY_SPEED = 0.45d, ENEMY_BASE_SPEED = ENEMY_SPEED*SCALE/20d*120d/UPS;
 	public static final double PROJECTILE_SPEED = 1.00d, PROJECTILE_BASE_SPEED = PROJECTILE_SPEED*SCALE/20d*120d/UPS;
 
 	public static final boolean SPAM_CONSOLE = false;
@@ -67,6 +67,7 @@ public class Main implements Data {
 	private static UpdateLoop updateLoop;
 
 	public static void main(String[] args) {
+		System.out.println(ENEMY_BASE_SPEED);
 		level = new Level(LevelLayout.layout);//create the level
 		RoundConfig.init();//generate rounds from the config file
 		updateLoop = new UpdateLoop();//create the loop

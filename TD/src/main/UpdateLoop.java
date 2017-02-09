@@ -19,9 +19,9 @@ public class UpdateLoop implements Runnable {
 		while (Main.isRunning()) {
 			currentTime = System.nanoTime();//makes currentTime the current time
 			if (currentTime-lastTime>=delay*speedFactor) {//if the difference between the current time and the last time is greater than delay*speedfactor
+				lastTime = currentTime;//makes lastTime the current time
 				update();//do the updates
 				Window.renderer.repaint();//refresh the screen
-				lastTime = System.nanoTime();//makes lastTime the current time
 			}
 		}
 	}
