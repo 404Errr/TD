@@ -56,7 +56,7 @@ public class Main implements Data {
 		System.out.println("WxH: "+LevelLayout.layout[0].length+"x"+LevelLayout.layout.length+" WxH: "+width+"x"+height+" Screen Size:"+screenSize+" Layout Size:"+layoutSize+" Scale:"+SCALE);
 	}
 
-	public static final int UPS = 10, ENEMY_SIZE = (int)(SCALE*2d/3d);
+	public static final int UPS = 120, ENEMY_SIZE = (int)(SCALE*2d/3d);
 	public static final double ENEMY_SPEED = 0.45d, ENEMY_BASE_SPEED = ENEMY_SPEED*SCALE/20d*120d/UPS;
 	public static final double PROJECTILE_SPEED = 1.00d, PROJECTILE_BASE_SPEED = PROJECTILE_SPEED*SCALE/20d*120d/UPS;
 
