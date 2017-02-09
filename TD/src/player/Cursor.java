@@ -12,15 +12,16 @@ public class Cursor {
 	private static int x, y;
 	private static Tower selectedTower, towerToPlace;
 
-	public static void click(MouseEvent e, boolean down) {
+	public static void processClick(MouseEvent e, boolean down) {
 		Tower towerToSelect = selectedTower;
+		boolean deselectTowerToPlace = false;
 		Button b;
 		if (down) {//if click was down (not up)
 			if (!UI.getBounds().contains(x, y)&&towerToPlace==null) {//check for click in main window
 				Tower t;
 				for (int i = 0;i<TowerManager.towers.size();i++) {
 					t = TowerManager.towers.get(i);
-					if (t == selectedTower&&towerToSelect==selectedTower) {//if clicked on the selected tower&& if towerToSelect hasn't changed yet
+					if (t == selectedTower&&towerToSelect==selectedTower) {//if clicked on the selected tower && if towerToSelect hasn't changed (yet)
 						towerToSelect = null;//deselect the tower
 						t.updateUpgrades();//update the tower
 					}
@@ -31,15 +32,15 @@ public class Cursor {
 				}
 			}
 			if (e.getButton()==MouseEvent.BUTTON3) {//if right clicked
-				deselectTowerToPlace();//deselect hovering tower
+				deselectTowerToPlace = true;//stop holding the tower
 			}
 			if (e.getButton()==MouseEvent.BUTTON1) {
 				if (towerToPlace!=null&&UI.getBounds().contains(x, y)) {//if is holding tower and clicked in ui area
-					deselectTowerToPlace();//deselect hovering tower
+					deselectTowerToPlace = true;//stop holding the tower
 				}
 				if (towerToPlace!=null&&towerToPlace.isPlaceable()&&Player.canAfford(towerToPlace.getValue())) {//if can place it
 					towerToPlace.place();//place it
-					deselectTowerToPlace();//stop holding the tower
+					deselectTowerToPlace = true;//stop holding the tower
 				}
 			}
 		}
@@ -61,12 +62,14 @@ public class Cursor {
 				if (b.getBounds().contains(x, y)&&e.getButton()==MouseEvent.BUTTON1) {//if cursor is on button and was leftclick
 					b.press(down);//press the button if click was down, depress if up
 					towerToSelect = selectedTower;
-					//deselectSelectedTower = false;//don't deselect if clicked an upgrade
 				}
 				else {
 					b.press(false);//depress the button
 				}
 			}
+		}
+		if (deselectTowerToPlace) {//if told to deselect tower to place
+			deselectTowerToPlace();//deselect tower to place
 		}
 		if (selectedTower!=towerToSelect) {//if towerToSelect will change
 			selectTower(towerToSelect);//select what was told to select

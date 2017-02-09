@@ -133,9 +133,9 @@ public class UserInput implements KeyListener, MouseMotionListener, MouseListene
 	@Override
 	public void mouseMoved(MouseEvent e) {player.Cursor.updateMouse(e);}
 	@Override
-	public void mousePressed(MouseEvent e) {player.Cursor.updateMouse(e);player.Cursor.click(e, true);}
+	public void mousePressed(MouseEvent e) {player.Cursor.updateMouse(e);player.Cursor.processClick(e, true);}
 	@Override
-	public void mouseReleased(MouseEvent e) {player.Cursor.updateMouse(e);player.Cursor.click(e, false);}
+	public void mouseReleased(MouseEvent e) {player.Cursor.updateMouse(e);player.Cursor.processClick(e, false);}
 	@Override
 	public void mouseWheelMoved(MouseWheelEvent arg0) {}
 }
