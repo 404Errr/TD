@@ -19,13 +19,13 @@ public class Cursor {
 		if (down) {//if click was down (not up)
 			if (!UI.getBounds().contains(x, y)&&towerToPlace==null) {//check for click in main window
 				Tower t;
-				for (int i = 0;i<TowerManager.towers.size();i++) {
-					t = TowerManager.towers.get(i);
+				for (int i = 0;i<TowerManager.getTowers().size();i++) {
+					t = TowerManager.getTowers().get(i);
 					if (t == selectedTower&&towerToSelect==selectedTower) {//if clicked on the selected tower && if towerToSelect hasn't changed (yet)
 						towerToSelect = null;//deselect the tower
 						t.updateUpgrades();//update the tower
 					}
-					else if (t.getBounds().contains(x, y)) {//if clicked on a different tower (not t)
+					else if (t.getBounds().contains(x, y)&&e.getButton()==MouseEvent.BUTTON1) {//if left clicked on a tower
 						towerToSelect = t;//select the tower
 						t.updateUpgrades();//update the tower
 					}

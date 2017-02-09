@@ -29,7 +29,7 @@ public class TowerTurret extends Tower {
 		gunAngle = Util.getAngleDegrees(x+towerSize/2, y+towerSize/2, target.getY()+ENEMY_SIZE/2, target.getX()+ENEMY_SIZE/2);
 		if (gunCooldown<=0) {
 			gunCooldown = maxCooldown;
-			ProjectileManager.projectiles.add(new ProjectileBullet(this, x+towerSize/2, y+towerSize/2, damage, canDamageMetal, gunAngle, TOWER_BULLET_NORMAL_INITIAL_VELOCITY, TOWER_BULLET_NORMAL_ACCELERATION));
+			ProjectileManager.getProjectiles().add(new ProjectileBullet(this, x+towerSize/2, y+towerSize/2, damage, canDamageMetal, gunAngle, TOWER_BULLET_NORMAL_INITIAL_VELOCITY, TOWER_BULLET_NORMAL_ACCELERATION));
 		}
 	}
 
@@ -40,8 +40,8 @@ public class TowerTurret extends Tower {
 				gunCooldown-=1000/Main.UPS;
 			}
 			Enemy e;
-			for (int i = 0;i<EnemyManager.enemies.size();i++) {
-				e = EnemyManager.enemies.get(i);
+			for (int i = 0;i<EnemyManager.getEnemies().size();i++) {
+				e = EnemyManager.getEnemies().get(i);
 				if (inRange(e)&&!e.isDestroy()&&e.canSee(canSeeCamo)) {
 					shoot(e);
 					break;
@@ -55,6 +55,5 @@ public class TowerTurret extends Tower {
 	}
 
 	@Override
-	protected
-	void upgradeSpecial(TowerUpgrade upgrade) {}
+	protected void upgradeSpecial(TowerUpgrade upgrade) {}
 }

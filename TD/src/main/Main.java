@@ -32,7 +32,7 @@ import window.ui.UI;
 
  * use with minor caution:
  * - = 1x speed
- * = = multiply speed modifier
+ * = = multiply speed modifier by SPEED_MODIFIER_MULTIPLIER
  */
 
 

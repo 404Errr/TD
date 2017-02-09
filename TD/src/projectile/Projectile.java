@@ -34,8 +34,8 @@ public abstract class Projectile implements Data {
 	protected void attemptHit() {
 		hitLine = new Line2D.Double((int)x, (int)y, (int)x-(dX*Main.PROJECTILE_BASE_SPEED), (int)y+(dY*Main.PROJECTILE_BASE_SPEED));//creates projectiles "hitbox" (position to future position)
 		Enemy e;
-		for (int i = 0;i<EnemyManager.enemies.size();i++) {//for all enemies
-			e = EnemyManager.enemies.get(i);
+		for (int i = 0;i<EnemyManager.getEnemies().size();i++) {//for all enemies
+			e = EnemyManager.getEnemies().get(i);
 			if (life>0&&!e.isDestroy()&&e.canDamage(canDamageMetal)) {//if enemy isnt dead && enemy isnt marked for deletion && tower can damage the enemy
 				if (e.getHitbox()!=null&&hitLine.intersects(e.getHitbox())) {//if the projectiles "hitbox" intersects with the enemy's hitbox
 					damage(e);//damage the enemy

@@ -35,7 +35,7 @@ public class TowerShotgun extends Tower {
 			double angle;
 			for (int i = 0;i<bulletCount;i++) {
 				angle = Util.getAngleSpread(gunAngle, gunSpread);
-				ProjectileManager.projectiles.add(new ProjectileBullet(this, x+towerSize/2, y+towerSize/2, damage, canDamageMetal, angle, TOWER_BULLET_NORMAL_INITIAL_VELOCITY, TOWER_BULLET_NORMAL_ACCELERATION));
+				ProjectileManager.getProjectiles().add(new ProjectileBullet(this, x+towerSize/2, y+towerSize/2, damage, canDamageMetal, angle, TOWER_BULLET_NORMAL_INITIAL_VELOCITY, TOWER_BULLET_NORMAL_ACCELERATION));
 			}
 		}
 	}
@@ -47,8 +47,8 @@ public class TowerShotgun extends Tower {
 				gunCooldown-=1000/Main.UPS;
 			}
 			Enemy e;
-			for (int i = 0;i<EnemyManager.enemies.size();i++) {
-				e = EnemyManager.enemies.get(i);
+			for (int i = 0;i<EnemyManager.getEnemies().size();i++) {
+				e = EnemyManager.getEnemies().get(i);
 				if (inRange(e)&&!e.isDestroy()&&e.canSee(canSeeCamo)) {
 					shoot(e);
 					break;

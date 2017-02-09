@@ -40,8 +40,8 @@ public class TowerIce extends Tower {
 			else {
 				Enemy e;
 				int hits = 0;
-				for (int i = 0;i<EnemyManager.enemies.size();i++) {
-					e = EnemyManager.enemies.get(i);
+				for (int i = 0;i<EnemyManager.getEnemies().size();i++) {
+					e = EnemyManager.getEnemies().get(i);
 					if (!e.isIced()&&!e.isDestroy()&&inRange(e)&&e.canSee(canSeeCamo)&&e.canDamage(canDamageMetal)) {
 						gunCooldown = maxCooldown;
 						slow(e);

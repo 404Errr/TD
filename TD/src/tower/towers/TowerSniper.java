@@ -44,8 +44,8 @@ public class TowerSniper extends Tower {
 				gunCooldown-=1000/Main.UPS;
 			}
 			Enemy e;
-			for (int i = 0;i<EnemyManager.enemies.size();i++) {
-				e = EnemyManager.enemies.get(i);
+			for (int i = 0;i<EnemyManager.getEnemies().size();i++) {
+				e = EnemyManager.getEnemies().get(i);
 				if (!e.isDestroy()&&e.canSee(canSeeCamo)&&e.canDamage(canDamageMetal)) {
 					shoot(e);
 					break;

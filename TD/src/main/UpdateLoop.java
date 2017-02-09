@@ -54,17 +54,19 @@ public class UpdateLoop implements Runnable {
 			UI.tick();
 			if (!Main.PAUSED) {
 				RoundManager.tick();
-				for (int i = 0;i<EnemyManager.enemies.size();i++) if (EnemyManager.enemies.get(i).tick()) {
-					System.out.println("-Deleted "+EnemyManager.enemies.get(i));
-					EnemyManager.enemies.remove(i);
+				for (int i = 0;i<EnemyManager.getEnemies().size();i++) if (EnemyManager.getEnemies().get(i).tick()) {
+					System.out.println("-Deleted "+EnemyManager.getEnemies().get(i));
+					EnemyManager.getEnemies().remove(i);
 				}
 				EnemyManager.tick();
-				for (int i = 0;i<ProjectileManager.projectiles.size();i++) if (ProjectileManager.projectiles.get(i).tick()) {
-					ProjectileManager.projectiles.remove(i);
+				for (int i = 0;i<ProjectileManager.getProjectiles().size();i++) if (ProjectileManager.getProjectiles().get(i).tick()) {
+					ProjectileManager.getProjectiles().remove(i);
 				}
-				for (int i = 0;i<TowerManager.towers.size();i++) if (TowerManager.towers.get(i).tick()) {
-					TowerManager.towers.remove(i);
+				ProjectileManager.tick();
+				for (int i = 0;i<TowerManager.getTowers().size();i++) if (TowerManager.getTowers().get(i).tick()) {
+					TowerManager.getTowers().remove(i);
 				}
+				TowerManager.tick();
 			}
 		}
 		catch (Exception e) {

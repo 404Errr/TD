@@ -46,14 +46,14 @@ class Renderer extends JPanel implements Data {
 
 	private void drawEnemies(Graphics2D g) {
 		Enemy e;
-		for (int i = 0;i<EnemyManager.enemies.size();i++) {
-			e = EnemyManager.enemies.get(i);
+		for (int i = 0;i<EnemyManager.getEnemies().size();i++) {
+			e = EnemyManager.getEnemies().get(i);
 			if (e.isVisible()) {
 				drawEnemy(g, e);
 				g.setFont(new Font("Helvetica", Font.PLAIN, Main.getScale()/2));
 				g.setColor(Color.BLACK);
 				if (Main.PAUSED) {
-					g.drawString((EnemyManager.enemies.indexOf(e)==0)+" "+e.getHealth()+"-"+e.getSides()+"-"+(int)e.getSpeed(), e.getY(), e.getX()-Main.getScale());
+					g.drawString(e.getHealth()+"-"+e.getSides()+"-"+(int)e.getSpeed(), e.getY(), e.getX()-Main.getScale());
 				}
 			}
 		}
@@ -118,8 +118,8 @@ class Renderer extends JPanel implements Data {
 
 	private void drawProjectiles(Graphics2D g) {
 		Projectile p;
-		for (int i = 0;i<ProjectileManager.projectiles.size();i++) {
-			p = ProjectileManager.projectiles.get(i);
+		for (int i = 0;i<ProjectileManager.getProjectiles().size();i++) {
+			p = ProjectileManager.getProjectiles().get(i);
 			g.setStroke(new BasicStroke(3));
 			g.setColor(Color.BLUE);
 			g.draw(Util.getCircle((int)p.getX(), (int)p.getY(), 4, true));
@@ -152,8 +152,8 @@ class Renderer extends JPanel implements Data {
 	}
 
 	private void drawTowers(Graphics2D g) {
-		for (int i = 0;i<TowerManager.towers.size();i++) {
-			drawTower(g, TowerManager.towers.get(i), false);
+		for (int i = 0;i<TowerManager.getTowers().size();i++) {
+			drawTower(g, TowerManager.getTowers().get(i), false);
 		}
 	}
 
