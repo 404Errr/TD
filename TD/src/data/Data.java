@@ -37,7 +37,6 @@ public interface Data {
 	static final double TOWER_SPRAYER_VALUE = 300;
 	static final double TOWER_ICE_VALUE = 300;
 
-
 	static final int UPGRADE_UI_SIZE = Main.getScale()*3/2, UPGRADE_UI_PADDING = Main.getScale()/2;
 
 	static final Font FONT_UI_TEXT = new Font("Helvetica", Font.BOLD, Main.getScale()*5/4);
