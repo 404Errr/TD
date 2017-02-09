@@ -55,6 +55,5 @@ public class TowerTurret extends Tower {
 	}
 
 	@Override
-	protected
-	void upgradeSpecial(TowerUpgrade upgrade) {}
+	protected void upgradeSpecial(TowerUpgrade upgrade) {}
 }
