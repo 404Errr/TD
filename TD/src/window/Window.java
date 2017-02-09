@@ -8,18 +8,18 @@ import javax.swing.JFrame;
 import graphics.Renderer;
 import main.Main;
 import main.Util;
-import player.Input;
+import player.UserInput;
 
 @SuppressWarnings("serial")
 public class Window extends JFrame {
 	public static JFrame frame;
-	public static Input input;
+	public static UserInput input;
 	public static Renderer renderer;
 	public static Rectangle2D bounds;
 
 	public static void init() {
 		renderer = new Renderer();
-		input = new Input();
+		input = new UserInput();
 		frame = new JFrame();
 		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		frame.setLayout(new GridLayout());

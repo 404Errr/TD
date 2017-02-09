@@ -20,7 +20,7 @@ import tower.TowerManager;
 import window.Window;
 import window.button.Button;
 
-public class Input implements KeyListener, MouseMotionListener, MouseListener, MouseWheelListener, Data {
+public class UserInput implements KeyListener, MouseMotionListener, MouseListener, MouseWheelListener, Data {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if (!EnemyManager.enemies.isEmpty()&&e.getKeyCode()==KeyEvent.VK_UP) {
