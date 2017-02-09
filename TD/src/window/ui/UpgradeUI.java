@@ -30,13 +30,13 @@ public class UpgradeUI implements Data {
 				upgradeList.add(currentTower.getAvailableUpgrades().get(i));
 				buttons.add(new ButtonUpgrade(x, y, i));
 			}
-			System.out.println("+Opening Upgrade UI");
+//			System.out.println("+Opening Upgrade UI");
 			open = true;
 		}
 	}
 
 	static void close() {
-		System.out.println("-Closing Upgrade UI");
+//		System.out.println("-Closing Upgrade UI");
 		open = false;
 		upgradeList.clear();
 		buttons.clear();
