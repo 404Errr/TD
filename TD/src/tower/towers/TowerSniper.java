@@ -1,15 +1,22 @@
 package tower.towers;
 
+import java.util.Arrays;
+
 import enemy.Enemy;
 import enemy.EnemyManager;
 import main.Main;
 import main.Util;
 import tower.Tower;
 import tower.TowerUpgrade;
+import tower.TowerUpgradeType;
 
 public class TowerSniper extends Tower {
 	public TowerSniper(int x, int y, boolean placed) {
 		super(x, y, placed, TOWER_SNIPER_SIZE, TOWER_SNIPER_BASE_RANGE, TOWER_SNIPER_VALUE);
+		availableUpgrades.addAll(Arrays.asList(
+			new TowerUpgrade(TowerUpgradeType.MAX_COOLDOWN, 200, -10d, true, false, 3),
+			new TowerUpgrade(TowerUpgradeType.DAMAGE, 230, 1, true, false, 4)
+		));
 		maxCooldown = TOWER_SNIPER_BASE_COOLDOWN;
 		damage = TOWER_SNIPER_BASE_DAMAGE;
 		name = "Sniper";
@@ -51,5 +58,13 @@ public class TowerSniper extends Tower {
 	}
 
 	@Override
-	protected void upgradeSpecial(TowerUpgrade upgrade) {}
+	protected void upgradeSpecial(TowerUpgrade upgrade) {
+		switch (upgrade.getType()) {
+		case CAN_SEE_CAMO:
+			canSeeCamo = true;
+			break;
+		default:
+			break;
+		}
+	}
 }

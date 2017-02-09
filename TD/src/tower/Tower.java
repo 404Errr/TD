@@ -17,19 +17,7 @@ import window.ui.UI;
 
 public abstract class Tower implements Data {
 	protected int x, y, towerSize, towerRange;
-	public double popCount;
-	protected double gunAngle;
-	protected double gunCooldown;
-	protected double maxCooldown;
-	protected double damage;
-	protected double value;
-	protected double bulletCount;
-	protected double gunSpread;
-	protected double hitCount;
-	protected double iceSpeedModifier;
-	protected double iceSlowDownDuration;
-	protected double metalBonusDamage;
-	protected double explosionRadius;
+	protected double popCount, gunAngle, gunCooldown, maxCooldown, damage, value, bulletCount, gunSpread, hitCount, iceSpeedModifier, iceSlowDownDuration, metalBonusDamage, explosionRadius;
 	protected boolean destroy, placed, canSeeCamo, canDamageMetal, drawGunAngle;
 	protected Ellipse2D bounds;
 	protected Rectangle2D hitbox;
@@ -105,6 +93,10 @@ public abstract class Tower implements Data {
 
 	public double getPopCount() {
 		return popCount;
+	}
+
+	public void addPops(double amount) {
+		popCount+=amount;
 	}
 
 	public int getTowerRange() {

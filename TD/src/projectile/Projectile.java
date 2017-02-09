@@ -73,10 +73,10 @@ public abstract class Projectile implements Data {
 		if (e.getHealth()>0&&damage>0) {
 			double temp = damage;
 			if (e.getHealth()>=damage) {
-				creator.popCount+=damage;
+				creator.addPops(damage);
 			}
 			else {
-				creator.popCount+=e.getHealth();
+				creator.addPops(e.getHealth());
 				Player.changeMoney(e.getHealth());
 			}
 			life-=e.getHealth();

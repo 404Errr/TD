@@ -1,5 +1,7 @@
 package tower.towers;
 
+import java.util.Arrays;
+
 import enemy.Enemy;
 import enemy.EnemyManager;
 import main.Main;
@@ -8,10 +10,16 @@ import projectile.ProjectileBullet;
 import projectile.ProjectileManager;
 import tower.Tower;
 import tower.TowerUpgrade;
+import tower.TowerUpgradeType;
 
 public class TowerSuperTurret extends Tower {
 	public TowerSuperTurret(int x, int y, boolean placed) {
 		super(x, y, placed, TOWER_SUPER_TURRET_SIZE, TOWER_SUPER_TURRET_BASE_RANGE, TOWER_SUPER_TURRET_VALUE);
+		availableUpgrades.addAll(Arrays.asList(
+			new TowerUpgrade(TowerUpgradeType.MAX_COOLDOWN, 200, -10d, true, false, 3),
+			new TowerUpgrade(TowerUpgradeType.RANGE, 100, 2*Main.getScale(), true, false, 3),
+			new TowerUpgrade(TowerUpgradeType.DAMAGE, 230, 1, true, false, 4)
+		));
 		maxCooldown = TOWER_SUPER_TURRET_BASE_COOLDOWN;
 		damage = TOWER_SUPER_TURRET_BASE_DAMAGE;
 		name = "Super Turret";

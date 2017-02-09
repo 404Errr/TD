@@ -4,10 +4,11 @@ public enum TowerUpgradeType {//TODO add more
 	MAX_COOLDOWN(false, "Firerate"),//most
 	DAMAGE(false, "Damage"),//most
 	RANGE(false, "Range"),//most
-	HIT_COUNT(false, "Hits"),//most
-	DOES_DAMAGE(true, "Does Damage"),//ice
-	BULLET_COUNT(false, "Pellet count"),//shotgun, sprayer
-	BULLET_SPREAD(false, "BulletSpread");//shotgun
+	CAN_SEE_CAMO(true, "Can See Camo"),//some
+	HIT_COUNT(false, "Hits"),//some
+	DOES_DAMAGE(true, "Does Damage"),//some
+	BULLET_COUNT(false, "Pellet Count"),//shotgun, sprayer
+	BULLET_SPREAD(false, "Bullet Spread");//shotgun
 
 	private boolean special;
 	private String displayText;
