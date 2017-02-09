@@ -3,9 +3,9 @@ package round;
 import java.util.ArrayList;
 
 public class Round {
-	private ArrayList<SpawnRequest> spawns = new ArrayList<>();
-	private int roundNum;
-	private boolean custom;
+	private ArrayList<SpawnRequest> spawns = new ArrayList<>();//spawns in the round
+	private int roundNum;//current round number
+	private boolean custom;//if the round has been configured
 
 	public Round(ArrayList<SpawnRequest> spawns, int roundNum) {
 		for (SpawnRequest sR:spawns) {

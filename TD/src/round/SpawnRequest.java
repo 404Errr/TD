@@ -3,8 +3,8 @@ package round;
 import enemy.Enemy;
 
 public class SpawnRequest {
-	private int delay;//milliseconds
-	private Enemy enemy;
+	private int delay;//milliseconds until this enemy will spawn
+	private Enemy enemy;//the enemy to spawn
 
 	SpawnRequest(int delay, Enemy enemy) {
 		this.delay = delay;
