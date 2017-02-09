@@ -111,6 +111,10 @@ public abstract class Tower implements Data {
 		return value;
 	}
 
+	public double getSellValue() {
+		return value*TOWER_SELL_RATE;
+	}
+
 	public int getX() {
 		return x;
 	}

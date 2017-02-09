@@ -7,8 +7,9 @@ public class TowerUpgrade {
 	private TowerUpgrade child;
 	private int repeat;
 
-	public TowerUpgrade(TowerUpgradeType type) {
+	public TowerUpgrade(TowerUpgradeType type, double price) {
 		this.type = type;
+		this.price = price;
 	}
 
 	public TowerUpgrade(TowerUpgradeType type, double price, double value, boolean increment, boolean percentage) {

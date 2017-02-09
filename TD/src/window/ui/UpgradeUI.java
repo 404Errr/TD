@@ -11,47 +11,46 @@ import player.Player;
 import tower.Tower;
 import tower.TowerUpgrade;
 import window.Window;
-import window.button.ButtonUpgrade;
+import window.button.UpgradeButton;
 
 public class UpgradeUI implements Data {
 	private static int x, y;
 	private static boolean open, refresh;
 	private static Tower currentTower;
+//	private static TowerUpgrade focusedUpgrade;//TODO
+//	TODO stats of current tower and stuff
 	private static ArrayList<TowerUpgrade> upgradeList = new ArrayList<>();
-	private static ArrayList<ButtonUpgrade> buttons = new ArrayList<>();
+	private static ArrayList<UpgradeButton> buttons = new ArrayList<>();
 
-	static void open(Tower tower) {
-		currentTower = tower;
-		if (currentTower!=null&&currentTower.getAvailableUpgrades().size()>0) {
-			upgradeList.clear();
-			buttons.clear();
-			setNewPos(currentTower.getX()+currentTower.getTowerSize()/2, currentTower.getY()+currentTower.getTowerSize()/2);
-			for (int i = 0;i<currentTower.getAvailableUpgrades().size();i++) {
-				upgradeList.add(currentTower.getAvailableUpgrades().get(i));
-				buttons.add(new ButtonUpgrade(x, y, i));
+	private static void open(Tower tower) {
+		currentTower = tower;//set current tower to the given tower
+		if (currentTower!=null&&currentTower.getAvailableUpgrades().size()>0) {//if current tower exists and has upgrades
+			upgradeList.clear();//clear list
+			buttons.clear();//clear list
+			setNewPos(currentTower.getX()+currentTower.getTowerSize()/2, currentTower.getY()+currentTower.getTowerSize()/2);//move the ui
+			for (int i = 0;i<currentTower.getAvailableUpgrades().size();i++) {//for available updgrade in the selected tower
+				upgradeList.add(currentTower.getAvailableUpgrades().get(i));//add upgrades to local list
+				buttons.add(new UpgradeButton(x, y, i));//create new buttons
+				buttons.get(i).tick();//tick the new buttons
 			}
-//			System.out.println("+Opening Upgrade UI");
-			open = true;
+			open = true;//open it
 		}
 	}
 
-	static void close() {
-//		System.out.println("-Closing Upgrade UI");
-		open = false;
-		upgradeList.clear();
-		buttons.clear();
+	private static void close() {
+		open = false;//close it
 	}
 
-	private static void refresh() {
-		System.out.println("=Refresh Upgrade UI");
+	private static void refreshUI() {
+		System.out.println("=Refreshing Upgrade UI");
 		close();
-		open(Cursor.getSelectedTower());
+		open(Cursor.getSelectedTower());//give selected tower
 
 	}
 
 	public static void tick() {
 		if (refresh) {
-			refresh();
+			refreshUI();
 			refresh = false;
 		}
 	}
@@ -60,7 +59,7 @@ public class UpgradeUI implements Data {
 		refresh = true;
 	}
 
-	public static ArrayList<ButtonUpgrade> getButtons() {
+	public static ArrayList<UpgradeButton> getButtons() {
 		return buttons;
 	}
 

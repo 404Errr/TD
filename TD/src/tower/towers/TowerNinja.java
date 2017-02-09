@@ -1,5 +1,7 @@
 package tower.towers;
 
+import java.util.Arrays;
+
 import enemy.Enemy;
 import enemy.EnemyManager;
 import main.Main;
@@ -8,10 +10,16 @@ import projectile.ProjectileBullet;
 import projectile.ProjectileManager;
 import tower.Tower;
 import tower.TowerUpgrade;
+import tower.TowerUpgradeType;
 
 public class TowerNinja extends Tower {
 	public TowerNinja(int x, int y, boolean placed) {
 		super(x, y, placed, TOWER_NINJA_SIZE, TOWER_NINJA_BASE_RANGE, TOWER_NINJA_VALUE);
+		availableUpgrades.addAll(Arrays.asList(
+			new TowerUpgrade(TowerUpgradeType.MAX_COOLDOWN, 200, -10d, true, false, 3),
+			new TowerUpgrade(TowerUpgradeType.RANGE, 100, 2*Main.getScale(), true, false, 3),
+			new TowerUpgrade(TowerUpgradeType.DAMAGE, 230, 1, true, false, 4)
+		));
 		maxCooldown = TOWER_NINJA_BASE_COOLDOWN;
 		damage = TOWER_NINJA_BASE_DAMAGE;
 		name = "Ninja";

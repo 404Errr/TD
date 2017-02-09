@@ -18,8 +18,8 @@ public class TowerShotgun extends Tower {
 		availableUpgrades.addAll(Arrays.asList(
 			new TowerUpgrade(TowerUpgradeType.MAX_COOLDOWN, 300, -10d, true, false, 5),
 			new TowerUpgrade(TowerUpgradeType.RANGE, 50, 1*Main.getScale(), true, false, 2),
-			new TowerUpgrade(TowerUpgradeType.BULLET_COUNT, 20, 2, true, false, 3),
-			new TowerUpgrade(TowerUpgradeType.DAMAGE, 20, 1, true, false, 3)
+			new TowerUpgrade(TowerUpgradeType.DAMAGE, 20, 1, true, false, 3),
+			new TowerUpgrade(TowerUpgradeType.BULLET_COUNT, 20, 2, true, false, 3)
 		));
 		maxCooldown = TOWER_SHOTGUN_BASE_COOLDOWN;
 		damage = TOWER_SHOTGUN_BASE_DAMAGE;

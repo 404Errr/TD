@@ -44,7 +44,7 @@ public interface Data {
 	static final int ENEMY_SIZE = Main.getScale(), ENEMY_HITBOX_SIZE = Main.getScale()*3/2;
 	static final int ENEMY_REGEN_RATE = 1000;//millis
 
-	static final int UPGRADE_UI_SIZE = Main.getScale(), UPGRADE_UI_PADDING = Main.getScale()/2;
+	static final int UPGRADE_UI_SIZE = Main.getScale()*3/2, UPGRADE_UI_PADDING = Main.getScale()/2;
 
 	static final Font FONT_UI_TEXT = new Font("Helvetica", Font.BOLD, Main.getScale()*5/4);
 	static final Font FONT_UI_HEALTH = new Font("Helvetica", Font.BOLD, Main.getScale()*5/4);
@@ -71,6 +71,4 @@ public interface Data {
 	static final Color COLOR_0 = new Color(200,200,200,255);//light gray
 	static final Color COLOR_1 = new Color(0,0,0,255);//black
 	static final Color COLOR_PATH = new Color(0,0,0,50);//transparent black
-
-	static final Color COLOR_ERR = Color.MAGENTA;
 }

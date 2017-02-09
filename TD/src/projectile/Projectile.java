@@ -50,13 +50,13 @@ public abstract class Projectile implements Data {
 		if (x<-100||y<-100||x>(Main.getLevel().getMap()[0].length*Main.getScale())+100||y>(Main.getLevel().getMap().length*Main.getScale())+100||life<=0) {//dead or off screen
 			markDestroy();
 		}
-		if (damages) {
-			attemptHit();
+		if (damages) {//if able to damage
+			attemptHit();//try to damage (anything/something)
 		}
-		return destroy;
+		return destroy;//return if projectile should be destroyed
 	}
 
-	void tickSpecial() {}
+	void tickSpecial() {}//used if projectile subclass needs it
 
 	protected void move() {
 		dX+=ddX*Main.PROJECTILE_BASE_SPEED;

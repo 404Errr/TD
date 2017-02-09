@@ -15,7 +15,8 @@ public class TowerSniper extends Tower {
 		super(x, y, placed, TOWER_SNIPER_SIZE, TOWER_SNIPER_BASE_RANGE, TOWER_SNIPER_VALUE);
 		availableUpgrades.addAll(Arrays.asList(
 			new TowerUpgrade(TowerUpgradeType.MAX_COOLDOWN, 200, -10d, true, false, 3),
-			new TowerUpgrade(TowerUpgradeType.DAMAGE, 230, 1, true, false, 4)
+			new TowerUpgrade(TowerUpgradeType.DAMAGE, 230, 1, true, false, 4),
+			new TowerUpgrade(TowerUpgradeType.CAN_SEE_CAMO, 230)
 		));
 		maxCooldown = TOWER_SNIPER_BASE_COOLDOWN;
 		damage = TOWER_SNIPER_BASE_DAMAGE;

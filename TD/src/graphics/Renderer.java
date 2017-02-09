@@ -37,7 +37,9 @@ class Renderer extends JPanel implements Data {
 			case 7:
 				return COLOR_0;
 		}
-		return COLOR_ERR;
+		System.out.println("Tile color error.");
+		System.exit(0);
+		return null;
 	}
 
 	private Graphics2D g;
@@ -158,6 +160,10 @@ class Renderer extends JPanel implements Data {
 	private void drawUI(Graphics2D g) {
 		g.setColor(COLOR_UI_BACKROUND);
 		g.fill(UI.getBounds());
+		drawPlayerStats(g);
+	}
+
+	private void drawUIButtons(Graphics2D g) {
 		Button b;
 		for (int i = 0;i<UI.getButtons().size();i++) {
 			b = UI.getButtons().get(i);
@@ -176,7 +182,11 @@ class Renderer extends JPanel implements Data {
 				g.drawString(b.getText2(), b.getBounds().x+2, b.getBounds().y-2+b.getBounds().height);
 			}
 		}
+	}
+
+	private void drawUpgradeUIButtons(Graphics2D g) {
 		if (UpgradeUI.isOpen()) {
+			Button b;
 			for (int i = 0;i<UpgradeUI.getButtons().size();i++) {
 				b = UpgradeUI.getButtons().get(i);
 				if (b.isHovered()&&!b.isPressed()) {
@@ -186,22 +196,23 @@ class Renderer extends JPanel implements Data {
 					g.setColor(COLOR_UI_BUTTON);
 				}
 				g.fill3DRect(b.getBounds().x, b.getBounds().y, b.getBounds().width, b.getBounds().height, !b.isPressed());
-				if (b.getText0()!=""||b.getText1()!=""||b.getText2()!="") {
-					g.setColor(COLOR_UI_TEXT);
-					g.setFont(b.getTextFont());
-					g.drawString(b.getText0(), b.getBounds().x+2, b.getBounds().y-2+b.getBounds().height-b.getTextFont().getSize()*2);
-					g.drawString(b.getText1(), b.getBounds().x+2, b.getBounds().y-2+b.getBounds().height-b.getTextFont().getSize());
-					g.drawString(b.getText2(), b.getBounds().x+2, b.getBounds().y-2+b.getBounds().height);
-				}
+//
+//				TODO add icon or something to buttons
+//
+//				if (b.getText0()!=""||b.getText1()!=""||b.getText2()!="") {
+//					g.setColor(COLOR_UI_TEXT);
+//					g.setFont(b.getTextFont());
+//					g.drawString(b.getText0(), b.getBounds().x+2, b.getBounds().y-2+b.getBounds().height-b.getTextFont().getSize()*2);
+//					g.drawString(b.getText1(), b.getBounds().x+2, b.getBounds().y-2+b.getBounds().height-b.getTextFont().getSize());
+//					g.drawString(b.getText2(), b.getBounds().x+2, b.getBounds().y-2+b.getBounds().height);
+//				}
 			}
 		}
-		drawPlayerStats(g);
 	}
 
-//	private void drawUPS(Graphics2D g) {
-//		g.setColor(COLOR_UI_UPS);
-//		//draw ups
-//	}
+	private void drawUpgradeUI(Graphics2D g) {
+		//TODO make this
+	}
 
 	@Override
 	public void paint(Graphics g0) {
@@ -212,7 +223,9 @@ class Renderer extends JPanel implements Data {
 		drawEnemies(g);
 		drawProjectiles(g);
 		drawUI(g);
+		drawUIButtons(g);
+		drawUpgradeUI(g);
+		drawUpgradeUIButtons(g);
 		drawFloatingTower(g);
-//		drawUPS(g);
 	}
 }
