@@ -73,8 +73,8 @@ public interface Data {
 	static final int ENEMY_SIZE = Main.getScale(), ENEMY_HITBOX_SIZE = Main.getScale()*3/2;
 	static final int ENEMY_REGEN_RATE = 1000;//millis
 
+	static final double SPEED_MODIFIER_MULTIPLIER = 0.8d;
 	static final int SAFE_ENEMY_COUNT = 100, SAFE_TOWER_COUNT = 100, SAFE_PROJECTILE_COUNT = 50;
-
 }
 
 

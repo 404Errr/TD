@@ -63,7 +63,7 @@ public class UserInput implements KeyListener, MouseMotionListener, MouseListene
 			UpdateLoop.setSpeedFactor(1.0);
 		}
 		if (e.getKeyCode()==KeyEvent.VK_EQUALS) {
-			UpdateLoop.changeSpeedFactor(0.8);
+			UpdateLoop.changeSpeedFactor(SPEED_MODIFIER_MULTIPLIER);
 		}
 		if (e.getKeyCode()==KeyEvent.VK_1) {
 			EnemyManager.getEnemies().add(new enemy.Enemy(2,EnemyType.NORMAL, true));

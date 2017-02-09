@@ -30,9 +30,9 @@ import window.ui.UI;
  * N = cheat out money
  * up/down arrow = change health of first enemy
 
- * use with minor caution: (probably broken anyway)
+ * use with minor caution:
  * - = 1x speed
- * = = multiply speed
+ * = = multiply speed modifier by SPEED_MODIFIER_MULTIPLIER
  */
 
 
