@@ -7,6 +7,7 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
+import java.util.ArrayList;
 
 import data.Data;
 import enemy.Enemy;
@@ -17,6 +18,7 @@ import main.Main;
 import main.Player;
 import main.UpdateLoop;
 import tower.Tower;
+import tower.TowerManager;
 import window.button.Button;
 
 class Input implements KeyListener, MouseMotionListener, MouseListener, MouseWheelListener, Data {
@@ -59,12 +61,10 @@ class Input implements KeyListener, MouseMotionListener, MouseListener, MouseWhe
 			Cursor.deselectTowerToPlace();
 		}
 		if (e.getKeyCode()==KeyEvent.VK_MINUS) {
-			System.out.println("x1");
-			UpdateLoop.setSpeedFactor(1);
+			UpdateLoop.setSpeedFactor(1.0);
 		}
 		if (e.getKeyCode()==KeyEvent.VK_EQUALS) {
-			System.out.println("x2");
-			UpdateLoop.setSpeedFactor(2);
+			UpdateLoop.changeSpeedFactor(0.8);
 		}
 		if (e.getKeyCode()==KeyEvent.VK_1) {
 			EnemyManager.enemies.add(new enemy.Enemy(2,EnemyType.NORMAL, true));
@@ -91,16 +91,20 @@ class Input implements KeyListener, MouseMotionListener, MouseListener, MouseWhe
 			EnemyManager.enemies.add(new enemy.Enemy(2,EnemyType.CAMOMETALREGEN, true));
 		}
 		if (e.getKeyCode()==KeyEvent.VK_J) {
-			for (Tower tower:tower.TowerManager.towers) {
+			ArrayList<Tower> towers = tower.TowerManager.towers;
+			for (int i = 0;i<towers.size();i++) {
+				Tower tower = towers.get(i);
 				tower.destroy(true);
 			}
-			System.out.println("Deleted all towers");
+			System.out.println("Deleted "+TowerManager.towers.size()+" towers");
 		}
 		if (e.getKeyCode()==KeyEvent.VK_K) {
-			for (Enemy enemy:EnemyManager.enemies) {
+			ArrayList<Enemy> enemies = EnemyManager.enemies;
+			for (int i = 0;i<enemies.size();i++) {
+				Enemy enemy = enemies.get(i);
 				enemy.markDestroy();
 			}
-			System.out.println("Deleted all enemies");
+			System.out.println("Deleted "+EnemyManager.enemies.size()+" enemies");
 		}
 		if (e.getKeyCode()==KeyEvent.VK_S) {
 			System.out.print("S key pressed:\n\t");
