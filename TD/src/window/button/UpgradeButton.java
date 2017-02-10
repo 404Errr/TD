@@ -3,7 +3,7 @@ package window.button;
 import java.awt.Rectangle;
 
 import data.Data;
-import window.ui.UpgradeUI;
+import ui.UpgradeUI;
 
 public class UpgradeButton extends Button implements Data {
 	public UpgradeButton(int x, int y, int pos) {

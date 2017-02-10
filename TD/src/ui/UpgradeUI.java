@@ -1,4 +1,4 @@
-package window.ui;
+package ui;
 
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
@@ -121,24 +121,15 @@ public class UpgradeUI implements Data {
 		}
 	}
 
-	private final static int DISTANCE = 6;
-	public static void setNewPos(int x, int y) {
-		Rectangle2D bounds;
-		int attempts = 0;//prevent infinite looping if it can't find a position
-		double a = 90, dA = 180, xOffset, yOffset, distance = Main.getScale()*DISTANCE;//the current angle, the current angle increment (180 to check above after below (only once)), where it is relative to the given postion (x), where it is relative to the given postion (y), how far away it will be from the given position
-		do {
-			xOffset = Util.getXComp(a, distance);
-			yOffset = Util.getYComp(a, distance);
+	public static void setNewPos(int x, int y) {//TODO
+		Rectangle2D bounds = null;
+		double xOffset, yOffset, distance = Main.getScale()*UPGRADE_UI_DISTANCE;
+		for (int i = 0;i<UPGRADE_UI_ANGLES.length&&(i==0||!Window.bounds.contains(bounds)||UI.getBounds().intersects(bounds));i++) {
+			xOffset = Util.getXComp(UPGRADE_UI_ANGLES[i], distance);
+			yOffset = Util.getYComp(UPGRADE_UI_ANGLES[i], distance);
 			bounds = new Rectangle2D.Double(x+xOffset-getXSize()/2-UPGRADE_UI_PADDING, y+yOffset-getYSize()/2-UPGRADE_UI_PADDING, getXSize()+UPGRADE_UI_PADDING*2, getYSize()+UPGRADE_UI_PADDING*2);
-			a+=dA;
-			if (a>=360) {//if its greater than 360
-				a-=360;
-			}
-			if (dA==180) {//after the second check is unsuccessful go to 45 degree increments (instead of the initial 180)
-				dA = 45;
-			}
-			attempts++;
-		} while (attempts<14&&(!Window.bounds.contains(bounds)||UI.getBounds().intersects(bounds)));//if it has tried less than 14 times && if its off of the screen (and not on the ui)
+		}
+
 		UpgradeUI.x = (int)bounds.getX();//move it
 		UpgradeUI.y = (int)bounds.getY();//move it
 

@@ -16,7 +16,7 @@ import tower.towers.TowerSniper;
 import tower.towers.TowerSprayer;
 import tower.towers.TowerSuperTurret;
 import tower.towers.TowerTurret;
-import window.ui.UI;
+import ui.UI;
 
 public class Button implements Data {
 	protected Rectangle bounds;

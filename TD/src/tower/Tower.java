@@ -12,8 +12,8 @@ import main.Main;
 import main.Util;
 import player.Cursor;
 import player.Player;
+import ui.UI;
 import window.Window;
-import window.ui.UI;
 
 public abstract class Tower implements Data {
 	protected int x, y, towerSize, towerRange;

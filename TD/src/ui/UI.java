@@ -1,4 +1,4 @@
-package window.ui;
+package ui;
 
 import java.awt.Rectangle;
 import java.util.ArrayList;
