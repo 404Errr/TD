@@ -16,9 +16,8 @@ import window.button.UpgradeButton;
 public class UpgradeUI implements Data {
 	private static int x, y;//position
 	private static boolean open, refresh;//if its open, if it should refresh the ui next frame
-	private static Tower currentTower;//the tower it is using
+	private static Tower currentTower;//the tower it is focusing on
 	private static TowerUpgrade focusedUpgrade;//TODO
-//	TODO stats of current tower and stuff
 	private static ArrayList<TowerUpgrade> upgradeList = new ArrayList<>();
 	private static ArrayList<UpgradeButton> buttons = new ArrayList<>();
 
@@ -91,48 +90,46 @@ public class UpgradeUI implements Data {
 	}
 
 	public static void pressed(int b) {
-		if (currentTower!=null) {
+		if (currentTower!=null) {//if there is a current tower
 			TowerUpgrade upgrade = currentTower.getAvailableUpgrades().get(b);
-			if (Player.canAfford(upgrade.getPrice())) {
-				Player.changeMoney(-upgrade.getPrice());
+			if (Player.canAfford(upgrade.getPrice())) {//can afford upgrade
+				Player.changeMoney(-upgrade.getPrice());//charge money
 				boolean delete = false;
-				if (upgrade.hasChild()) {
-					if (upgrade.getRepeat()>0) {
-						upgrade.decreaseRepeat();
-						if (upgrade.getRepeat()==0) {
-							delete = true;
+				if (upgrade.hasChild()) {//if has child
+					if (upgrade.getRepeat()>0) {//if has repeat
+						upgrade.decreaseRepeat();//-=1
+						if (upgrade.getRepeat()==0) {//if out of repeats
+							delete = true;//delete it
 						}
 					}
 					else {
-						currentTower.getAvailableUpgrades().set(currentTower.getAvailableUpgrades().indexOf(upgrade), upgrade.getChild());
+						currentTower.getAvailableUpgrades().set(currentTower.getAvailableUpgrades().indexOf(upgrade), upgrade.getChild());//replace upgrade with its child
 					}
 				}
-				else {
-					delete = true;
+				else {//if doesnt have child
+					delete = true;//delete it
 				}
-				currentTower.getToActivate().add(upgrade);
-				if (delete) {
-					currentTower.getAvailableUpgrades().remove(upgrade);
+				currentTower.getToActivate().add(upgrade);//place upgrade in activation queue
+				if (delete) {//if should delete
+					currentTower.getAvailableUpgrades().remove(upgrade);//remove from available list
 				}
-				currentTower.updateUpgrades();
+				currentTower.updateUpgrades();//update the tower
 			}
 			System.out.println(upgrade.getType());
-			setRefresh();
+			setRefresh();//refresh ui
 		}
 	}
 
-	public static void setNewPos(int x, int y) {//TODO
+	public static void setNewPos(int x, int y) {
 		Rectangle2D bounds = null;
 		double xOffset, yOffset, distance = Main.getScale()*UPGRADE_UI_DISTANCE;
-		for (int i = 0;i<UPGRADE_UI_ANGLES.length&&(i==0||!Window.bounds.contains(bounds)||UI.getBounds().intersects(bounds));i++) {
+		for (int i = 0;i<UPGRADE_UI_ANGLES.length&&(i==0||!Window.bounds.contains(bounds)||UI.getBounds().intersects(bounds));i++) {//for each programmed position && still not valid
 			xOffset = Util.getXComp(UPGRADE_UI_ANGLES[i], distance);
 			yOffset = Util.getYComp(UPGRADE_UI_ANGLES[i], distance);
 			bounds = new Rectangle2D.Double(x+xOffset-getXSize()/2-UPGRADE_UI_PADDING, y+yOffset-getYSize()/2-UPGRADE_UI_PADDING, getXSize()+UPGRADE_UI_PADDING*2, getYSize()+UPGRADE_UI_PADDING*2);
 		}
-
 		UpgradeUI.x = (int)bounds.getX();//move it
 		UpgradeUI.y = (int)bounds.getY();//move it
-
 	}
 
 }

@@ -7,6 +7,7 @@ import main.Main;
 
 public interface Data {
 	static final String ROUND_CONFIG_PATH = "src/data/roundConfig";
+//	static final String ROUND_CONFIG_PATH = "src/data/debugRoundConfig";
 
 	static final double TOWER_TURRET_BASE_DAMAGE = 1,             TOWER_TURRET_BASE_COOLDOWN = 650;
 	static final double TOWER_BOMB_BASE_DAMAGE = 1,               TOWER_BOMB_BASE_COOLDOWN = 750,            TOWER_BOMB_BASE_METAL_BONUS_DAMAGE = 5, TOWER_BOMB_BASE_EXPLOSION_RADIUS = 2.5;
@@ -39,8 +40,9 @@ public interface Data {
 
 	static final int UPGRADE_UI_SIZE = Main.getScale()*3/2, UPGRADE_UI_PADDING = Main.getScale()/2;
 	static final double UPGRADE_UI_DISTANCE = 6;
-	static final int[] UPGRADE_UI_ANGLES = {90, 270, 315, 0, 45, 135, 180, 225};//0 is right (clockwise) TODO change
-
+//	static final int[] UPGRADE_UI_ANGLES = {90, 270, 315, 0, 45, 135, 180, 225};//0 is right (clockwise)
+	static final int[] UPGRADE_UI_ANGLES = {90, 135, 45, 180, 0, 225, 315, 270};//0 is right (clockwise)
+	
 	static final Font FONT_UI_TEXT = new Font("Helvetica", Font.BOLD, Main.getScale()*5/4);
 	static final Font FONT_UI_HEALTH = new Font("Helvetica", Font.BOLD, Main.getScale()*5/4);
 
@@ -76,7 +78,7 @@ public interface Data {
 	static final int ENEMY_REGEN_RATE = 1000;//millis
 
 	static final double SPEED_MODIFIER_MULTIPLIER = 0.8d;
-	static final int SAFE_ENEMY_COUNT = 100, SAFE_TOWER_COUNT = 100, SAFE_PROJECTILE_COUNT = 50;
+	static final int SAFE_ENEMY_COUNT = /*100*/10000, SAFE_TOWER_COUNT = 100, SAFE_PROJECTILE_COUNT = 50;//limits
 }
 
 

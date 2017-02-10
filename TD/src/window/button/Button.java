@@ -7,7 +7,6 @@ import data.Data;
 import main.Main;
 import player.Cursor;
 import round.RoundManager;
-import tower.TowerManager;
 import tower.towers.TowerBomb;
 import tower.towers.TowerIce;
 import tower.towers.TowerNinja;
@@ -67,18 +66,26 @@ public class Button implements Data {
 				break;
 //			case 10:
 //				System.out.println();
-//				TowerManager.towers.add(new TowerTurret(20*Main.getScale(), 20*Main.getScale(), true));
-//				TowerManager.towers.add(new TowerTurret(20*Main.getScale(), 23*Main.getScale(), true));
+//				TowerManager.addTower(new TowerTurret(20*Main.getScale(), 20*Main.getScale(), true));
+//				TowerManager.addTower(new TowerTurret(20*Main.getScale(), 26*Main.getScale(), true));
 //				break;
-			case 11:
-				System.out.println();
-				//2
-				//27, 14
-				for (int i = 0;i<3;i++) {
-					for (int j = 0;j<3;j++) {
-						TowerManager.addTower(new TowerTurret((i*27+2)*Main.getScale(), (j*14+2)*Main.getScale(), true));
-					}
-				}
+//			case 10:
+//				System.out.println();
+//				for (int i = 0;i<70;i++) {
+//					for (int j = 0;j<3;j++) {
+//						TowerManager.addTower(new TowerTurret((int) ((i*0.25+2)*Main.getScale()), ((j*1)+16)*Main.getScale(), true));
+//					}
+//				}
+//				break;
+//			case 11:
+//				System.out.println();
+//				//2
+//				//27, 14
+//				for (int i = 0;i<3;i++) {
+//					for (int j = 0;j<3;j++) {
+//						TowerManager.addTower(new TowerTurret((i*27+2)*Main.getScale(), (j*14+2)*Main.getScale(), true));
+//					}
+//				}
 //				TowerManager.towers.add(new TowerTurret(2*Main.getScale(), 2*Main.getScale(), true));
 //				TowerManager.towers.add(new TowerTurret(55*Main.getScale(), 2*Main.getScale(), true));
 //				TowerManager.towers.add(new TowerTurret(2*Main.getScale(), 29*Main.getScale(), true));
@@ -88,11 +95,11 @@ public class Button implements Data {
 //				TowerManager.towers.add(new TowerTurret(27*Main.getScale(), 29*Main.getScale(), true));
 //				TowerManager.towers.add(new TowerTurret(55*Main.getScale(), 14*Main.getScale(), true));
 //				TowerManager.towers.add(new TowerTurret(27*Main.getScale(), 14*Main.getScale(), true));
-				break;
+//				break;
 //			case 12:
 //				System.out.println();
-//				TowerManager.towers.add(new TowerTurret(8*Main.getScale(), 9*Main.getScale(), true));
-//				TowerManager.towers.add(new TowerTurret(8*Main.getScale(), 19*Main.getScale(), true));
+//				TowerManager.addTower(new TowerTurret(8*Main.getScale(), 9*Main.getScale(), true));
+//				TowerManager.addTower(new TowerTurret(8*Main.getScale(), 19*Main.getScale(), true));
 //				break;
 //			case 13:
 //				System.out.println();

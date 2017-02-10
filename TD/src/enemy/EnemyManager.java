@@ -33,7 +33,7 @@ public class EnemyManager implements Data {
 
 	public static void tick() {
 		sortEnemies();
-		canSpawnEnemies = enemies.size()<=SAFE_ENEMY_COUNT;
+		canSpawnEnemies = enemies.size()<SAFE_ENEMY_COUNT;
 	}
 
 	public static boolean canSpawnEnemies() {

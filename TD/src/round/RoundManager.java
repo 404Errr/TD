@@ -10,7 +10,7 @@ import player.Player;
 public class RoundManager implements Data {
 	private static ArrayList<Round> rounds = new ArrayList<>();
 	private static int roundNumber, currentSpawn;
-	private static double tilNextSpawn;
+	private static double tilNextSpawn;//time until next enemy will spawn
 	private static Round currentRound = null;
 	private static boolean startRound, stillHasRounds = true, awarded;
 	private static boolean firstRound = true;
