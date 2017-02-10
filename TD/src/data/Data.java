@@ -38,6 +38,8 @@ public interface Data {
 	static final double TOWER_ICE_VALUE = 300;
 
 	static final int UPGRADE_UI_SIZE = Main.getScale()*3/2, UPGRADE_UI_PADDING = Main.getScale()/2;
+	static final double UPGRADE_UI_DISTANCE = 6;
+	static final int[] UPGRADE_UI_ANGLES = {90, 270, 315, 0, 45, 135, 180, 225};//0 is right (clockwise) TODO change
 
 	static final Font FONT_UI_TEXT = new Font("Helvetica", Font.BOLD, Main.getScale()*5/4);
 	static final Font FONT_UI_HEALTH = new Font("Helvetica", Font.BOLD, Main.getScale()*5/4);

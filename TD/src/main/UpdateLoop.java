@@ -5,9 +5,9 @@ import player.Cursor;
 import projectile.ProjectileManager;
 import round.RoundManager;
 import tower.TowerManager;
+import ui.UI;
+import ui.UpgradeUI;
 import window.Window;
-import window.ui.UI;
-import window.ui.UpgradeUI;
 
 public class UpdateLoop implements Runnable {
 	private static double speedFactor = 1.0;//speed multiplier (0.5 is 2x speed)

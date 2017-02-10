@@ -22,9 +22,9 @@ import projectile.ProjectileManager;
 import round.RoundManager;
 import tower.Tower;
 import tower.TowerManager;
+import ui.UI;
+import ui.UpgradeUI;
 import window.button.Button;
-import window.ui.UI;
-import window.ui.UpgradeUI;
 
 public @SuppressWarnings("serial")
 class Renderer extends JPanel implements Data {
@@ -214,6 +214,15 @@ class Renderer extends JPanel implements Data {
 		//TODO make this
 	}
 
+	private void drawDebug(Graphics2D g2) {
+		g.setFont(new Font("Helvetica", Font.BOLD, 12));
+		g.setColor(Color.GREEN);
+		g.drawString("DEBUG:", 10, 30);
+		g.drawString("Enemy Count: "+EnemyManager.getEnemies().size()+"/"+SAFE_ENEMY_COUNT, 10, 42);
+		g.drawString("Tower Count: "+TowerManager.getTowers().size()+"/"+SAFE_TOWER_COUNT, 10, 54);
+		g.drawString("Projectile Count: "+ProjectileManager.getProjectiles().size()+"/"+SAFE_PROJECTILE_COUNT, 10, 66);
+	}
+
 	@Override
 	public void paint(Graphics g0) {
 		g = (Graphics2D) g0;
@@ -227,5 +236,8 @@ class Renderer extends JPanel implements Data {
 		drawUpgradeUI(g);
 		drawUpgradeUIButtons(g);
 		drawFloatingTower(g);
+		if (Main.DEBUG) drawDebug(g);
 	}
+
+
 }

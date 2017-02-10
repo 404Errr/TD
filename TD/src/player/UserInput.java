@@ -37,8 +37,11 @@ public class UserInput implements KeyListener, MouseMotionListener, MouseListene
 				Player.changeMoney(-MONEY_CHEAT_AMOUNT);
 			}
 		}
-		if (e.getKeyCode()==KeyEvent.VK_C) {
+		if (e.getKeyCode()==KeyEvent.VK_C) {//center the window
 			Window.centerWindow();
+		}
+		if (e.getKeyCode()==KeyEvent.VK_F3) {//toggles debug
+			Main.toggleDebug();
 		}
 		if (e.getKeyCode()==KeyEvent.VK_SPACE) if (!Main.PAUSED) {//pause
 			Main.togglePaused(true);

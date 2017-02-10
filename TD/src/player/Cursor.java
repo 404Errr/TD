@@ -4,9 +4,9 @@ import java.awt.event.MouseEvent;
 
 import tower.Tower;
 import tower.TowerManager;
+import ui.UI;
+import ui.UpgradeUI;
 import window.button.Button;
-import window.ui.UI;
-import window.ui.UpgradeUI;
 
 public class Cursor {
 	private static int x, y;

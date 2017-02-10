@@ -7,11 +7,11 @@ import data.Data;
 import level.Level;
 import level.LevelLayout;
 import round.RoundConfig;
+import ui.UI;
 import window.Window;
-import window.ui.UI;
 
 /* controls:
- * C = center window
+ * C = center the window
  * P = toggle PAUSE (or button)
  * SPACE = hold PAUSE
  * S = start next round (or button)
@@ -22,6 +22,7 @@ import window.ui.UI;
  * delete = delete/sell selected tower (or button)
  *
  * cheats:
+ * F3 = toggle debug
  * K = kill all enemies
  * J = delete all towers
  * L = loop toggle
@@ -60,8 +61,8 @@ public class Main implements Data {
 	public static final double ENEMY_SPEED = 0.45d, ENEMY_BASE_SPEED = ENEMY_SPEED*SCALE/20d*120d/UPS;
 	public static final double PROJECTILE_SPEED = 1.00d, PROJECTILE_BASE_SPEED = PROJECTILE_SPEED*SCALE/20d*120d/UPS;
 
-	public static final boolean SPAM_CONSOLE = false;
-	public static boolean RUNNING = true, LOOP_ENEMIES = false, AUTO_ROUND = false, PAUSED, FREE = false;
+//	public static final boolean SPAM_CONSOLE = false;//doesn't do anything atm
+	public static boolean RUNNING = true, LOOP_ENEMIES = false, AUTO_ROUND = false, PAUSED, FREE = false, DEBUG = false;
 
 	private static Level level;
 	private static UpdateLoop updateLoop;
@@ -77,9 +78,14 @@ public class Main implements Data {
 
 	}
 
-	public static void toggleAutoRound() {
+	public static void toggleAutoRound() {//toggles automatic round starting
 		AUTO_ROUND = (AUTO_ROUND)?false:true;
 		System.out.println("Automatic rounds set to: "+AUTO_ROUND);
+	}
+
+	public static void toggleDebug() {//toggles debug
+		DEBUG = (DEBUG)?false:true;
+		System.out.println("Debug set to: "+DEBUG);
 	}
 
 	public static void toggleFree() {//toggles money functionality
@@ -92,12 +98,12 @@ public class Main implements Data {
 		System.out.println("looping set to: "+LOOP_ENEMIES);
 	}
 
-	public static void togglePaused() {
+	public static void togglePaused() {//toggle pause
 		PAUSED = (PAUSED)?false:true;
 		System.out.println((PAUSED)?"PAUSED":"UNPAUSED");
 	}
 
-	public static void togglePaused(boolean state) {
+	public static void togglePaused(boolean state) {//set the pause
 		PAUSED = state;
 		System.out.println((PAUSED)?"PAUSED":"UNPAUSED");
 	}
@@ -146,9 +152,9 @@ public class Main implements Data {
 		return PROJECTILE_BASE_SPEED;
 	}
 
-	public static boolean spamConsole() {
-		return SPAM_CONSOLE;
-	}
+//	public static boolean spamConsole() {
+//		return SPAM_CONSOLE;
+//	}
 
 	public static boolean isRunning() {
 		return RUNNING;
